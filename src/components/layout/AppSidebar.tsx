@@ -62,7 +62,7 @@ export function AppSidebar({ sidebarCollapsed }: SidebarProps) {
           <Logo className="ml-0" />
         ) : (
           <img 
-            src="/lovable-uploads/2c723bd4-c86f-4c64-9555-34a70241ca67.png" 
+            src="/lovable-uploads/af-red-with-text.png" 
             alt="AF Logo" 
             className="h-6" 
           />
