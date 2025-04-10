@@ -22,16 +22,11 @@ const AppStoreDownloads = () => {
                 +8.3% ↑
               </div>
             </div>
-            <span className="download-text mt-1">Total downloads across iOS devices</span>
+            <span className="download-text mt-1"></span>
           </div>
+          <span className="download-text mt-1">Total downloads across Ios devices</span>
           
-          <div className="mt-4 h-2 bg-white/20 rounded-full overflow-hidden">
-            <div className="h-full bg-white rounded-full" style={{width: '73%'}}></div>
-          </div>
-          <div className="flex justify-between mt-1">
-            <span className="text-xs text-white/60">iOS 16+</span>
-            <span className="text-xs text-white/60">73% of total</span>
-          </div>
+
         </div>
       </Card>
       
@@ -54,13 +49,7 @@ const AppStoreDownloads = () => {
             <span className="download-text mt-1">Total downloads across Android devices</span>
           </div>
           
-          <div className="mt-4 h-2 bg-white/20 rounded-full overflow-hidden">
-            <div className="h-full bg-white rounded-full" style={{width: '85%'}}></div>
-          </div>
-          <div className="flex justify-between mt-1">
-            <span className="text-xs text-white/60">Android 10+</span>
-            <span className="text-xs text-white/60">85% of total</span>
-          </div>
+
         </div>
       </Card>
     </div>
