@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import CashFlowSummary from '@/components/dashboard/CashFlowSummary';
 import CashFlowCharts from '@/components/dashboard/CashFlowCharts';
@@ -57,15 +56,15 @@ const mockTransactions = [
   { id: '12', date: '2023-12-28', description: 'Equipment Purchase', category: 'equipment', amount: 80, type: 'expense' as const },
 ];
 
-// Mock data for cost breakdown
+// Mock data for cost breakdown with better labels
 const mockCostData = [
   { name: 'Salaries', value: 45000, color: '#a0b41c' },
   { name: 'Marketing', value: 18000, color: '#718F00' },
   { name: 'Equipment', value: 12500, color: '#4C6C00' },
   { name: 'Office Rent', value: 8500, color: '#2C4A00' },
   { name: 'Software', value: 5200, color: '#5ced73' },
-  { name: 'Travel', value: 3500, color: '#a0b41c' },
-  { name: 'Miscellaneous', value: 2800, color: '#718F00' },
+  { name: 'Travel', value: 3500, color: '#d8e182' },
+  { name: 'Miscellaneous', value: 2800, color: '#8a9919' },
 ];
 
 const Dashboard = () => {
@@ -74,7 +73,15 @@ const Dashboard = () => {
   // In a real app, this data would change based on the selected time period
   const earnings = 12000;
   const spendings = 8000;
+  
+  // Calculate the total cost
   const totalCost = mockCostData.reduce((acc, cost) => acc + cost.value, 0);
+  
+  // Add totalValue to the cost data for percentage calculations
+  const enhancedCostData = mockCostData.map(item => ({
+    ...item,
+    totalValue: totalCost
+  }));
   
   const handleTimeFilterChange = (period: string) => {
     setTimePeriod(period);
@@ -117,7 +124,7 @@ const Dashboard = () => {
       />
 
       <CostBreakdown 
-        costData={mockCostData}
+        costData={enhancedCostData}
         totalCost={totalCost}
       />
       

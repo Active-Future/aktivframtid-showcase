@@ -1,14 +1,6 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-  Cell,
-  Legend,
-  Pie,
-  PieChart,
-  ResponsiveContainer,
-  Tooltip,
-} from "recharts";
-import { Progress } from "@/components/ui/progress";
+import { DonutChart } from "@/components/ui/donut-chart";
 import { Briefcase, TrendingUp, ShoppingBag, Building, LaptopIcon, Plane, Package } from "lucide-react";
 
 const COST_COLORS = ["#a0b41c", "#718F00", "#4C6C00", "#2C4A00", "#5ced73", "#d8e182", "#8a9919"];
@@ -45,6 +37,12 @@ const getIconForCostType = (costType: string) => {
 
 const CostBreakdown = ({ costData, totalCost }: CostBreakdownProps) => {
   const sortedCostData = [...costData].sort((a, b) => b.value - a.value);
+  
+  // Format the data for the DonutChart
+  const chartData = sortedCostData.map(item => ({
+    name: item.name,
+    value: item.value
+  }));
 
   return (
     <Card className="animate-fade-in [animation-delay:400ms] border border-aktivGreen-base/20 shadow-md">
@@ -53,35 +51,12 @@ const CostBreakdown = ({ costData, totalCost }: CostBreakdownProps) => {
       </CardHeader>
       <CardContent className="p-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div className="h-[280px]">
-            <ResponsiveContainer width="100%" height="100%">
-              <PieChart>
-                <Pie
-                  data={costData}
-                  cx="50%"
-                  cy="50%"
-                  labelLine={false}
-                  outerRadius={100}
-                  dataKey="value"
-                  nameKey="name"
-                  label={({ name, percent }) =>
-                    `${name} ${(percent * 100).toFixed(0)}%`
-                  }
-                >
-                  {costData.map((entry, index) => (
-                    <Cell
-                      key={`cell-${index}`}
-                      fill={
-                        entry.color ||
-                        COST_COLORS[index % COST_COLORS.length]
-                      }
-                    />
-                  ))}
-                </Pie>
-                <Tooltip formatter={(value) => [`${value.toLocaleString()} SEK`, ""]} />
-                <Legend layout="horizontal" verticalAlign="bottom" align="center" />
-              </PieChart>
-            </ResponsiveContainer>
+          <div className="flex justify-center items-center h-[280px]">
+            <DonutChart 
+              data={chartData}
+              colors={COST_COLORS}
+              valueFormatter={(value) => `${value.toLocaleString()} SEK`}
+            />
           </div>
 
           <div className="space-y-4">
@@ -90,7 +65,7 @@ const CostBreakdown = ({ costData, totalCost }: CostBreakdownProps) => {
               <p className="text-2xl font-bold">{totalCost.toLocaleString()} SEK</p>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-4 max-h-[280px] overflow-y-auto pr-2">
               {sortedCostData.map((item, index) => (
                 <div key={index} className="bg-white p-4 rounded-lg border border-gray-100 shadow-sm">
                   <div className="flex justify-between items-center mb-2">
