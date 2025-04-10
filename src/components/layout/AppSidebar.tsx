@@ -48,13 +48,13 @@ export function AppSidebar({ sidebarCollapsed }: SidebarProps) {
   return (
     <Sidebar
       className={cn(
-        "transition-all duration-300 bg-aktivGreen-base bg-opacity-10",
+        "z-40 transition-all duration-300 bg-aktivGreen-base bg-opacity-10 border-r border-aktivGreen-base/20",
         sidebarCollapsed ? "w-16" : "w-64"
       )}
     >
       <div className="p-3 flex items-center justify-start h-16 border-b border-aktivGreen-base border-opacity-20">
         {!sidebarCollapsed ? (
-          <Logo className="ml-0" />
+          <Logo className="ml-0 h-6" />
         ) : (
           <img 
             src="/lovable-uploads/af-red-with-text.png" 

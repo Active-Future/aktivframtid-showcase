@@ -2,6 +2,7 @@
 import * as React from "react";
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Legend } from "recharts";
 import { ChartContainer, ChartTooltipContent, ChartConfig } from "./chart";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface DonutChartProps {
   data: Array<{ name: string; value: number }>;
@@ -22,6 +23,12 @@ export const DonutChart = ({
   colors = ["#a0b41c", "#718F00", "#4C6C00", "#2C4A00", "#5ced73", "#d8e182", "#8a9919"],
   valueFormatter = (value: number) => `${value}`,
 }: DonutChartProps) => {
+  const isMobile = useIsMobile();
+  
+  // Adjust sizes for mobile
+  const mobileInnerRadius = innerRadius * 0.8;
+  const mobileOuterRadius = outerRadius * 0.8;
+
   // Create config for the chart tooltip
   const chartConfig: ChartConfig = data.reduce((acc, item, index) => {
     acc[item[nameKey as keyof typeof item] as string] = {
@@ -30,10 +37,15 @@ export const DonutChart = ({
     return acc;
   }, {} as ChartConfig);
 
+  // Calculate total for percentage calculation
+  const total = data.reduce((sum, item) => sum + item[dataKey as keyof typeof item] as number, 0);
+
   // Custom label renderer to avoid overlapping
   const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index, name }: any) => {
     // Only show labels for segments with percent > 5%
     if (percent < 0.05) return null;
+    // On mobile, only show for segments with percent > 10%
+    if (isMobile && percent < 0.1) return null;
 
     const RADIAN = Math.PI / 180;
     // Calculate the position for the label
@@ -51,7 +63,7 @@ export const DonutChart = ({
         fill={colors[index % colors.length]}
         textAnchor={textAnchor}
         dominantBaseline="central"
-        fontSize="12"
+        fontSize={isMobile ? "10" : "12"}
         fontWeight="600"
       >
         {`${name} ${(percent * 100).toFixed(0)}%`}
@@ -61,7 +73,7 @@ export const DonutChart = ({
 
   return (
     <ChartContainer className="h-full w-full" config={chartConfig}>
-      <div className="h-full w-full">
+      <div className="h-[200px] sm:h-[250px] lg:h-[300px] w-full">
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
             <Pie
@@ -70,8 +82,8 @@ export const DonutChart = ({
               cy="50%"
               labelLine={false}
               label={renderCustomizedLabel}
-              innerRadius={innerRadius}
-              outerRadius={outerRadius}
+              innerRadius={isMobile ? mobileInnerRadius : innerRadius}
+              outerRadius={isMobile ? mobileOuterRadius : outerRadius}
               fill="#8884d8"
               dataKey={dataKey}
               nameKey={nameKey}
@@ -89,15 +101,16 @@ export const DonutChart = ({
               content={({ active, payload }) => {
                 if (active && payload && payload.length) {
                   const data = payload[0];
+                  const value = data.value as number;
                   return (
                     <div className="rounded-lg border bg-background p-2 shadow-md">
                       <div className="flex flex-col gap-0.5">
                         <p className="text-sm font-medium">{data.name}</p>
                         <p className="text-xs">
-                          {valueFormatter(data.value as number)}
+                          {valueFormatter(value)}
                         </p>
                         <p className="text-xs text-muted-foreground">
-                          {`${((data.value as number) / data.payload.totalValue * 100).toFixed(1)}%`}
+                          {`${(value / total * 100).toFixed(1)}%`}
                         </p>
                       </div>
                     </div>
