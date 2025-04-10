@@ -10,7 +10,7 @@ import {
 } from "recharts";
 import { Progress } from "@/components/ui/progress";
 
-const COST_COLORS = ["#a0b41c", "#b9cb49", "#8a9919", "#c6d566", "#738015", "#5c6711", "#d8e182"];
+const COST_COLORS = ["#a0b41c", "#718F00", "#4C6C00", "#2C4A00", "#5ced73", "#d8e182", "#8a9919"];
 
 type CostData = {
   name: string;
@@ -66,7 +66,7 @@ const CostBreakdown = ({ costData, totalCost }: CostBreakdownProps) => {
 
           <div className="space-y-4">
             <div className="mb-4">
-              <h3 className="text-lg font-medium text-green-800 mb-1">Total Cost</h3>
+              <h3 className="text-lg font-medium text-[#4C6C00] mb-1">Total Cost</h3>
               <p className="text-2xl font-bold">{totalCost.toLocaleString()} SEK</p>
             </div>
 
@@ -81,8 +81,10 @@ const CostBreakdown = ({ costData, totalCost }: CostBreakdownProps) => {
                     <Progress 
                       value={(item.value / totalCost) * 100} 
                       className="h-2"
-                      style={{ backgroundColor: "#eaeaea" }}
-                      indicatorStyle={{ backgroundColor: item.color || COST_COLORS[index % COST_COLORS.length] }}
+                      style={{ 
+                        backgroundColor: "#eaeaea",
+                        "--primary": item.color || COST_COLORS[index % COST_COLORS.length]
+                      } as React.CSSProperties}
                     />
                     <span className="text-xs text-muted-foreground">
                       {((item.value / totalCost) * 100).toFixed(1)}%

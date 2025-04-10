@@ -5,14 +5,15 @@ import CashFlowCharts from '@/components/dashboard/CashFlowCharts';
 import TransactionsTable from '@/components/dashboard/TransactionsTable';
 import TimeFilter from '@/components/dashboard/TimeFilter';
 import CostBreakdown from '@/components/dashboard/CostBreakdown'; 
+import AppStoreDownloads from '@/components/dashboard/AppStoreDownloads';
 
 // Mock data for expenses
 const mockExpenseData = [
   { name: 'Team Accounts', value: 1200, color: '#a0b41c' },
-  { name: 'Cups', value: 2500, color: '#b9cb49' },
-  { name: 'Equipment', value: 450, color: '#8a9919' },
-  { name: 'Memberships', value: 350, color: '#c6d566' },
-  { name: 'Market Sales', value: 400, color: '#738015' },
+  { name: 'Cups', value: 2500, color: '#718F00' },
+  { name: 'Equipment', value: 450, color: '#4C6C00' },
+  { name: 'Memberships', value: 350, color: '#2C4A00' },
+  { name: 'Market Sales', value: 400, color: '#5ced73' },
 ];
 
 // Mock data for time series
@@ -59,12 +60,12 @@ const mockTransactions = [
 // Mock data for cost breakdown
 const mockCostData = [
   { name: 'Salaries', value: 45000, color: '#a0b41c' },
-  { name: 'Marketing', value: 18000, color: '#b9cb49' },
-  { name: 'Equipment', value: 12500, color: '#8a9919' },
-  { name: 'Office Rent', value: 8500, color: '#c6d566' },
-  { name: 'Software', value: 5200, color: '#738015' },
-  { name: 'Travel', value: 3500, color: '#5c6711' },
-  { name: 'Miscellaneous', value: 2800, color: '#d8e182' },
+  { name: 'Marketing', value: 18000, color: '#718F00' },
+  { name: 'Equipment', value: 12500, color: '#4C6C00' },
+  { name: 'Office Rent', value: 8500, color: '#2C4A00' },
+  { name: 'Software', value: 5200, color: '#5ced73' },
+  { name: 'Travel', value: 3500, color: '#a0b41c' },
+  { name: 'Miscellaneous', value: 2800, color: '#718F00' },
 ];
 
 const Dashboard = () => {
@@ -84,8 +85,12 @@ const Dashboard = () => {
   return (
     <div className="space-y-6">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+        <h2 className="text-xl font-bold text-aktivGreen-tertiary">Dashboard Overview</h2>
         <TimeFilter onFilterChange={handleTimeFilterChange} />
       </div>
+      
+      <h2 className="text-xl font-semibold mb-2 text-aktivGreen-tertiary">App Downloads</h2>
+      <AppStoreDownloads />
       
       <CashFlowSummary 
         earnings={earnings} 
@@ -97,7 +102,7 @@ const Dashboard = () => {
       />
       
       <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-        <h2 className="dashboard-section-title text-green-800">Financial Overview</h2>
+        <h2 className="dashboard-section-title text-aktivGreen-tertiary">Financial Overview</h2>
         <TimeFilter 
           onFilterChange={handleTimeFilterChange} 
           compact={true} 

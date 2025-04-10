@@ -68,6 +68,19 @@ export default {
 				},
 				profit: '#a0b41c',
 				loss: '#ef4444',
+				// Adding new theme colors
+				aktivGreen: {
+					light: '#5ced73',
+					base: '#a0b41c',
+					secondary: '#718F00',
+					tertiary: '#4C6C00',
+					quaternary: '#2C4A00',
+				},
+				aktiv: {
+					success: 'rgb(218, 250, 203)',
+					onSuccess: 'rgb(54, 170, 100)',
+					bottomTab: '#F0E6D1',
+				},
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -100,12 +113,21 @@ export default {
 						opacity: '1',
 						transform: 'translateY(0)'
 					}
+				},
+				'float': {
+					'0%, 100%': {
+						transform: 'translateY(0)'
+					},
+					'50%': {
+						transform: 'translateY(-10px)'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'fade-in': 'fade-in 0.5s ease-out'
+				'fade-in': 'fade-in 0.5s ease-out',
+				'float': 'float 3s ease-in-out infinite'
 			}
 		}
 	},

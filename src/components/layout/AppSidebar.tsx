@@ -11,7 +11,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { LayoutDashboard, Users, BarChart3, Server, Download } from "lucide-react";
+import { LayoutDashboard, Users, BarChart3, Server } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Logo from "./Logo";
 
@@ -39,11 +39,6 @@ export function AppSidebar({ sidebarCollapsed }: SidebarProps) {
       icon: BarChart3,
     },
     {
-      title: "Downloads",
-      url: "/downloads",
-      icon: Download,
-    },
-    {
       title: "Server Status",
       url: "/server-status",
       icon: Server,
@@ -53,11 +48,11 @@ export function AppSidebar({ sidebarCollapsed }: SidebarProps) {
   return (
     <Sidebar
       className={cn(
-        "transition-all duration-300 bg-green-50",
+        "transition-all duration-300 bg-aktivGreen-base bg-opacity-10",
         sidebarCollapsed ? "w-16" : "w-64"
       )}
     >
-      <div className="p-3 flex items-center justify-start h-16 border-b">
+      <div className="p-3 flex items-center justify-start h-16 border-b border-aktivGreen-base border-opacity-20">
         {!sidebarCollapsed ? (
           <Logo className="ml-0" />
         ) : (
@@ -70,7 +65,7 @@ export function AppSidebar({ sidebarCollapsed }: SidebarProps) {
       </div>
       <SidebarContent>
         <SidebarGroup>
-          {!sidebarCollapsed && <SidebarGroupLabel className="text-green-800">Main</SidebarGroupLabel>}
+          {!sidebarCollapsed && <SidebarGroupLabel className="text-aktivGreen-quaternary">Main</SidebarGroupLabel>}
           <SidebarGroupContent>
             <SidebarMenu>
               {mainMenuItems.map((item) => (
@@ -83,8 +78,8 @@ export function AppSidebar({ sidebarCollapsed }: SidebarProps) {
                         location.pathname === item.url ||
                           (item.url !== "/" &&
                             location.pathname.startsWith(item.url))
-                          ? "text-green-700 font-medium"
-                          : "text-green-800",
+                          ? "text-aktivGreen-tertiary font-medium"
+                          : "text-aktivGreen-quaternary",
                         sidebarCollapsed ? "justify-center" : ""
                       )}
                     >
