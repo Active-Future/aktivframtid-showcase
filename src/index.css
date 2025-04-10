@@ -35,7 +35,7 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 72 74% 40%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
     --sidebar-background: 72 100% 95%;
     --sidebar-foreground: 78 100% 15%;
@@ -170,4 +170,47 @@
 
 .download-text {
   @apply text-sm opacity-75;
+}
+
+/* Modern UI elements */
+.modern-card {
+  @apply rounded-xl border border-gray-100 shadow-md hover:shadow-lg transition-all duration-300;
+}
+
+.modern-button {
+  @apply rounded-lg px-4 py-2 font-medium transition-all duration-200 hover:shadow-md;
+}
+
+.status-indicator {
+  @apply flex items-center gap-1 text-sm font-medium;
+}
+
+.status-indicator-dot {
+  @apply w-2 h-2 rounded-full;
+}
+
+.status-open {
+  @apply text-aktiv-onSuccess;
+}
+
+.status-open .status-indicator-dot {
+  @apply bg-aktiv-onSuccess;
+}
+
+/* Server status progress bars */
+.server-progress {
+  @apply h-2 rounded-full bg-gray-100 overflow-hidden;
+}
+
+.server-progress-bar {
+  @apply h-full bg-gradient-to-r from-aktivGreen-base to-aktivGreen-secondary;
+}
+
+/* Cost breakdown section */
+.cost-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4;
+}
+
+.cost-item {
+  @apply p-4 rounded-lg border border-gray-100 flex items-center gap-3;
 }

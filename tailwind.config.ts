@@ -68,7 +68,6 @@ export default {
 				},
 				profit: '#a0b41c',
 				loss: '#ef4444',
-				// Adding new theme colors
 				aktivGreen: {
 					light: '#5ced73',
 					base: '#a0b41c',
@@ -128,6 +127,10 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.5s ease-out',
 				'float': 'float 3s ease-in-out infinite'
+			},
+			boxShadow: {
+				'card': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+				'card-hover': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
 			}
 		}
 	},
