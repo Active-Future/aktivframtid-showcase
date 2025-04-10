@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
@@ -10,8 +11,9 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { LayoutDashboard, Users, BarChart3, Server } from "lucide-react";
+import { LayoutDashboard, Users, BarChart3, Server, Download } from "lucide-react";
 import { cn } from "@/lib/utils";
+import Logo from "./Logo";
 
 type SidebarProps = {
   sidebarCollapsed: boolean;
@@ -37,6 +39,11 @@ export function AppSidebar({ sidebarCollapsed }: SidebarProps) {
       icon: BarChart3,
     },
     {
+      title: "Downloads",
+      url: "/downloads",
+      icon: Download,
+    },
+    {
       title: "Server Status",
       url: "/server-status",
       icon: Server,
@@ -46,20 +53,24 @@ export function AppSidebar({ sidebarCollapsed }: SidebarProps) {
   return (
     <Sidebar
       className={cn(
-        "transition-all duration-300",
+        "transition-all duration-300 bg-green-50",
         sidebarCollapsed ? "w-16" : "w-64"
       )}
     >
-      <div className="p-3 flex items-center justify-center h-16 border-b">
+      <div className="p-3 flex items-center justify-start h-16 border-b">
         {!sidebarCollapsed ? (
-          <h1 className="text-xl font-bold tracking-tight">AktivFramtid</h1>
+          <Logo className="ml-0" />
         ) : (
-          <Users size={28} className="text-primary" />
+          <img 
+            src="/lovable-uploads/2c723bd4-c86f-4c64-9555-34a70241ca67.png" 
+            alt="AF Logo" 
+            className="h-6" 
+          />
         )}
       </div>
       <SidebarContent>
         <SidebarGroup>
-          {!sidebarCollapsed && <SidebarGroupLabel>Main</SidebarGroupLabel>}
+          {!sidebarCollapsed && <SidebarGroupLabel className="text-green-800">Main</SidebarGroupLabel>}
           <SidebarGroupContent>
             <SidebarMenu>
               {mainMenuItems.map((item) => (
@@ -72,8 +83,8 @@ export function AppSidebar({ sidebarCollapsed }: SidebarProps) {
                         location.pathname === item.url ||
                           (item.url !== "/" &&
                             location.pathname.startsWith(item.url))
-                          ? "text-primary font-medium"
-                          : "",
+                          ? "text-green-700 font-medium"
+                          : "text-green-800",
                         sidebarCollapsed ? "justify-center" : ""
                       )}
                     >

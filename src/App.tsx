@@ -10,6 +10,7 @@ import Accounts from "./pages/Accounts";
 import UserDetail from "./pages/UserDetail";
 import Analytics from "./pages/Analytics";
 import ServerStatus from "./pages/ServerStatus";
+import Downloads from "./pages/Downloads";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
             <Route path="/accounts" element={<Accounts />} />
             <Route path="/accounts/:userId" element={<UserDetail />} />
             <Route path="/analytics" element={<Analytics />} />
+            <Route path="/downloads" element={<Downloads />} />
             <Route path="/server-status" element={<ServerStatus />} />
           </Route>
           <Route path="*" element={<NotFound />} />

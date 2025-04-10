@@ -4,8 +4,9 @@ import CashFlowSummary from '@/components/dashboard/CashFlowSummary';
 import CashFlowCharts from '@/components/dashboard/CashFlowCharts';
 import TransactionsTable from '@/components/dashboard/TransactionsTable';
 import TimeFilter from '@/components/dashboard/TimeFilter';
+import CostBreakdown from '@/components/dashboard/CostBreakdown'; 
 
-// Mock data - in a real app, this would come from an API
+// Mock data for expenses
 const mockExpenseData = [
   { name: 'Team Accounts', value: 1200, color: '#a0b41c' },
   { name: 'Cups', value: 2500, color: '#b9cb49' },
@@ -14,6 +15,7 @@ const mockExpenseData = [
   { name: 'Market Sales', value: 400, color: '#738015' },
 ];
 
+// Mock data for time series
 const mockTimeSeriesData = [
   { date: 'Jan', income: 8000, expenses: 6200 },
   { date: 'Feb', income: 7800, expenses: 5900 },
@@ -29,6 +31,7 @@ const mockTimeSeriesData = [
   { date: 'Dec', income: 12000, expenses: 8800 },
 ];
 
+// Mock data for category comparison
 const mockCategoryComparisonData = [
   { category: 'Team Accounts', income: 9500, expenses: 0 },
   { category: 'Cups', income: 2500, expenses: 0 },
@@ -37,6 +40,7 @@ const mockCategoryComparisonData = [
   { category: 'Market Sales', income: 0, expenses: 450 },
 ];
 
+// Mock data for transactions
 const mockTransactions = [
   { id: '1', date: '2023-12-01', description: 'Monthly Salary', category: 'salary', amount: 9500, type: 'income' as const },
   { id: '2', date: '2023-12-03', description: 'Equipment Purchase', category: 'equipment', amount: 2500, type: 'expense' as const },
@@ -52,12 +56,24 @@ const mockTransactions = [
   { id: '12', date: '2023-12-28', description: 'Equipment Purchase', category: 'equipment', amount: 80, type: 'expense' as const },
 ];
 
+// Mock data for cost breakdown
+const mockCostData = [
+  { name: 'Salaries', value: 45000, color: '#a0b41c' },
+  { name: 'Marketing', value: 18000, color: '#b9cb49' },
+  { name: 'Equipment', value: 12500, color: '#8a9919' },
+  { name: 'Office Rent', value: 8500, color: '#c6d566' },
+  { name: 'Software', value: 5200, color: '#738015' },
+  { name: 'Travel', value: 3500, color: '#5c6711' },
+  { name: 'Miscellaneous', value: 2800, color: '#d8e182' },
+];
+
 const Dashboard = () => {
   const [timePeriod, setTimePeriod] = useState('thisWeek');
   
   // In a real app, this data would change based on the selected time period
   const earnings = 12000;
   const spendings = 8000;
+  const totalCost = mockCostData.reduce((acc, cost) => acc + cost.value, 0);
   
   const handleTimeFilterChange = (period: string) => {
     setTimePeriod(period);
@@ -66,8 +82,10 @@ const Dashboard = () => {
   };
 
   return (
-    <div>
-      <TimeFilter onFilterChange={handleTimeFilterChange} />
+    <div className="space-y-6">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+        <TimeFilter onFilterChange={handleTimeFilterChange} />
+      </div>
       
       <CashFlowSummary 
         earnings={earnings} 
@@ -78,11 +96,24 @@ const Dashboard = () => {
         spendingsTrend="up"
       />
       
-      <h2 className="dashboard-section-title">Financial Overview</h2>
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+        <h2 className="dashboard-section-title text-green-800">Financial Overview</h2>
+        <TimeFilter 
+          onFilterChange={handleTimeFilterChange} 
+          compact={true} 
+          className="mt-2 md:mt-0"
+        />
+      </div>
+      
       <CashFlowCharts 
         expenseData={mockExpenseData} 
         timeSeriesData={mockTimeSeriesData}
         categoryComparisonData={mockCategoryComparisonData}
+      />
+
+      <CostBreakdown 
+        costData={mockCostData}
+        totalCost={totalCost}
       />
       
       <TransactionsTable transactions={mockTransactions} />

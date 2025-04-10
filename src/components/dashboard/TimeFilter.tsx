@@ -1,33 +1,31 @@
 
 import React from 'react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Card, CardContent } from '@/components/ui/card';
 
 type TimeFilterProps = {
   onFilterChange: (period: string) => void;
+  defaultValue?: string;
+  className?: string;
+  compact?: boolean;
 };
 
-const TimeFilter = ({ onFilterChange }: TimeFilterProps) => {
+const TimeFilter = ({ onFilterChange, defaultValue = "thisWeek", className = "", compact = false }: TimeFilterProps) => {
   return (
-    <Card className="mb-6 animate-fade-in">
-      <CardContent className="p-4">
-        <div className="flex items-center justify-between">
-          <h3 className="text-sm font-medium">Time Period:</h3>
-          <Select defaultValue="thisWeek" onValueChange={onFilterChange}>
-            <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="Select time period" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="today">Today</SelectItem>
-              <SelectItem value="thisWeek">This Week</SelectItem>
-              <SelectItem value="thisMonth">This Month</SelectItem>
-              <SelectItem value="thisQuarter">This Quarter</SelectItem>
-              <SelectItem value="thisYear">This Year</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-      </CardContent>
-    </Card>
+    <div className={`${className}`}>
+      {!compact && <span className="text-sm font-medium mr-2 text-green-800">Time Period:</span>}
+      <Select defaultValue={defaultValue} onValueChange={onFilterChange}>
+        <SelectTrigger className={compact ? "w-[130px] bg-green-100 text-green-800" : "w-[180px]"}>
+          <SelectValue placeholder="Select time period" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="today">Today</SelectItem>
+          <SelectItem value="thisWeek">This Week</SelectItem>
+          <SelectItem value="thisMonth">This Month</SelectItem>
+          <SelectItem value="thisQuarter">This Quarter</SelectItem>
+          <SelectItem value="thisYear">This Year</SelectItem>
+        </SelectContent>
+      </Select>
+    </div>
   );
 };
 
