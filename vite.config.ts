@@ -6,7 +6,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: mode === "production" ? "/AktivFramtid-Monitoring/" : "/",
+  base: mode === "production" ? "/aktivframtid-admin/" : "/",
   server: {
     host: "::",
     port: 8080,
