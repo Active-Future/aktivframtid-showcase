@@ -8,6 +8,7 @@ import DashboardLayout from "./components/layout/DashboardLayout";
 import Dashboard from "./pages/Index";
 import Accounts from "./pages/Accounts";
 import UserDetail from "./pages/UserDetail";
+import Invoice from "./pages/Invoice";
 import Analytics from "./pages/Analytics";
 import ServerStatus from "./pages/ServerStatus";
 import NotFound from "./pages/NotFound";
@@ -25,6 +26,7 @@ const App = () => (
             <Route path="/" element={<Dashboard />} />
             <Route path="/accounts" element={<Accounts />} />
             <Route path="/accounts/:userId" element={<UserDetail />} />
+            <Route path="/invoice/:userId/:purchaseIndex" element={<Invoice />} />
             <Route path="/analytics" element={<Analytics />} />
             <Route path="/server-status" element={<ServerStatus />} />
           </Route>

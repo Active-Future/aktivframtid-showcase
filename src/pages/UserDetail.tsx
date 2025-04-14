@@ -16,6 +16,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Button } from "@/components/ui/button";
+import { FileText } from "lucide-react";
 import { PieChart } from "lucide-react";
 import { users } from "@/lib/mockData";
 import { DonutChart } from "@/components/ui/donut-chart";
@@ -121,13 +123,14 @@ const UserDetail = () => {
                   <TableHead>Description</TableHead>
                   <TableHead>Category</TableHead>
                   <TableHead className="text-right">Amount (SEK)</TableHead>
+                  <TableHead className="text-right">Actions</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {user.purchases.length === 0 ? (
                   <TableRow>
                     <TableCell
-                      colSpan={4}
+                      colSpan={5}
                       className="text-center py-10 text-muted-foreground"
                     >
                       No purchases found
@@ -152,6 +155,17 @@ const UserDetail = () => {
                       </TableCell>
                       <TableCell className="text-right font-medium text-aktivGreen-quaternary">
                         {purchase.amount.toLocaleString()} SEK
+                      </TableCell>
+                      <TableCell className="text-right">
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="border-aktivGreen-base/20 text-aktivGreen-quaternary hover:bg-aktivGreen-base/10 hover:text-aktivGreen-quaternary"
+                          onClick={() => navigate(`/invoice/${userId}/${index}`)}
+                        >
+                          <FileText className="h-4 w-4 mr-1" />
+                          Invoice
+                        </Button>
                       </TableCell>
                     </TableRow>
                   ))
