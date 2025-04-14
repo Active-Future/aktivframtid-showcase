@@ -1,50 +1,35 @@
-
-import React, { useState } from 'react';
-import { SidebarProvider } from '@/components/ui/sidebar';
-import { AppSidebar } from '@/components/layout/AppSidebar';
-import { Outlet } from 'react-router-dom';
-import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
-import { useIsMobile } from '@/hooks/use-mobile';
+import React, { useState } from "react";
+import { SidebarProvider } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/layout/AppSidebar";
+import { Outlet } from "react-router-dom";
+import { cn } from "@/lib/utils";
 
 const DashboardLayout = () => {
+  // This controls sidebar collapse state for desktop only
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
-  const isMobile = useIsMobile();
-
-  // Auto-collapse sidebar on mobile by default
-  React.useEffect(() => {
-    if (isMobile) {
-      setSidebarCollapsed(true);
-    }
-  }, [isMobile]);
 
   return (
     <SidebarProvider>
       <div className="min-h-screen flex w-full">
         <AppSidebar sidebarCollapsed={sidebarCollapsed} />
-        <div className="flex-1 flex flex-col min-h-screen">
-          <div className="p-2 sm:p-4 border-b flex justify-between items-center bg-gradient-to-r from-aktivGreen-base to-aktivGreen-tertiary text-white shadow-md">
-            <div className="flex items-center">
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
-                className="text-white hover:bg-white/10"
-              >
-                {sidebarCollapsed ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-              </Button>
-              <h1 className="text-lg sm:text-xl font-bold ml-2">AktivFramtid Dashboard</h1>
+        <div className="flex-1 flex flex-col min-h-screen text-left">
+          <div
+            className="p-4 flex justify-between items-center text-aktivGreen-quaternary  bg-aktivGreen-base/5"
+            style={{
+              paddingBottom: "19px",
+            }}
+          >
+            <div className="flex-1 md:ml-4">
+              <h1 className="text-xl font-bold">Cash Flow Dashboard</h1>
             </div>
-            <div className="hidden sm:flex items-center gap-2">
-              <span className="text-sm">Last updated: {new Date().toLocaleString()}</span>
+
+            <div className="flex items-center gap-2">
+              <span className="text-sm text-muted-foreground">
+                Last updated: {new Date().toLocaleString()}
+              </span>
             </div>
           </div>
-          <main className={cn(
-            "flex-1 mx-auto py-4 sm:py-6 px-2 sm:px-4 w-full", 
-            sidebarCollapsed ? "md:pl-20" : "md:pl-64",
-            "max-w-full md:max-w-7xl transition-all duration-300"
-          )}>
+          <main className="border-t" style={{ padding: 35 }}>
             <Outlet />
           </main>
         </div>

@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import {
@@ -17,7 +16,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { PieChart } from "lucide-react";
+import { ArrowLeft, PieChart } from "lucide-react";
 import { users } from "@/lib/mockData";
 import { DonutChart } from "@/components/ui/donut-chart";
 
@@ -74,6 +73,15 @@ const UserDetail = () => {
 
   return (
     <div>
+      <Button
+        variant="ghost"
+        className="mb-6"
+        onClick={() => navigate("/accounts")}
+      >
+        <ArrowLeft className="mr-2 h-4 w-4" />
+        Back to Accounts
+      </Button>
+
       <div className="flex flex-col md:flex-row items-start gap-6 mb-6">
         <Card className="w-full md:w-1/3">
           <CardHeader>
@@ -97,6 +105,7 @@ const UserDetail = () => {
             <CardTitle>Spending by Category</CardTitle>
           </CardHeader>
           <CardContent className="flex justify-center pb-10">
+            {/* Added padding-bottom */}
             <div className="w-full max-w-xs">
               <DonutChart
                 data={chartData}
@@ -116,8 +125,8 @@ const UserDetail = () => {
         <CardHeader>
           <CardTitle>Purchase History</CardTitle>
         </CardHeader>
-        <CardContent className="px-0 sm:px-6">
-          <div className="rounded-md border overflow-x-auto">
+        <CardContent>
+          <div className="rounded-md border">
             <Table>
               <TableHeader>
                 <TableRow>
@@ -140,8 +149,8 @@ const UserDetail = () => {
                 ) : (
                   user.purchases.map((purchase, index) => (
                     <TableRow key={index}>
-                      <TableCell className="whitespace-nowrap">{purchase.date}</TableCell>
-                      <TableCell className="max-w-[150px] sm:max-w-none truncate">{purchase.description}</TableCell>
+                      <TableCell>{purchase.date}</TableCell>
+                      <TableCell>{purchase.description}</TableCell>
                       <TableCell>
                         <span
                           className="inline-block px-2 py-1 rounded-full text-xs font-medium"
@@ -154,7 +163,7 @@ const UserDetail = () => {
                           {purchase.category}
                         </span>
                       </TableCell>
-                      <TableCell className="text-right font-medium whitespace-nowrap">
+                      <TableCell className="text-right font-medium">
                         {purchase.amount.toLocaleString()} SEK
                       </TableCell>
                     </TableRow>

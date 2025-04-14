@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -15,16 +15,16 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 72 74% 40%;
+    --primary: 74 73% 40%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 78 100% 28%;
+    --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 72 74% 40%;
+    --accent: 74 73% 40%;
     --accent-foreground: 222.2 47.4% 11.2%;
 
     --destructive: 0 84.2% 60.2%;
@@ -32,18 +32,18 @@
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 72 74% 40%;
+    --ring: 74 73% 40%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
-    --sidebar-background: 72 100% 95%;
-    --sidebar-foreground: 78 100% 15%;
-    --sidebar-primary: 72 74% 40%;
+    --sidebar-background: #f0f0f0; /* Replace with your desired color */
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 74 73% 40%;
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 72 70% 93%;
-    --sidebar-accent-foreground: 78 100% 15%;
-    --sidebar-border: 72 30% 90%;
-    --sidebar-ring: 72 74% 40%;
+    --sidebar-accent: 68 60.3% 61.6%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 74 73% 40%;
   }
 
   .dark {
@@ -56,7 +56,7 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 72 74% 40%;
+    --primary: 74 73% 40%;
     --primary-foreground: 222.2 47.4% 11.2%;
 
     --secondary: 217.2 32.6% 17.5%;
@@ -65,7 +65,7 @@
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 72 74% 40%;
+    --accent: 74 73% 40%;
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
@@ -73,16 +73,16 @@
 
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 72 74% 40%;
-    
-    --sidebar-background: 78 30% 15%;
-    --sidebar-foreground: 72 15% 85%;
-    --sidebar-primary: 72 74% 40%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 78 15% 20%;
-    --sidebar-accent-foreground: 72 15% 85%;
-    --sidebar-border: 78 10% 25%;
-    --sidebar-ring: 72 74% 40%;
+    --ring: 74 73% 40%;
+
+    --sidebar-background: 60 80% 95%; /* Light yellow/cream */
+    --sidebar-foreground: 85 50% 20%; /* Dark olive green for text */
+    --sidebar-primary: 85 70% 35%; /* Olive green for active items */
+    --sidebar-primary-foreground: 60 80% 97%; /* Light text on primary */
+    --sidebar-accent: 0 60% 45%; /* Red accent from logo */
+    --sidebar-accent-foreground: 0 0% 100%; /* White text on accent */
+    --sidebar-border: 60 15% 85%; /* Light border color */
+    --sidebar-ring: 85 70% 35%; /* Matching primary for focus rings */
   }
 }
 
@@ -93,174 +93,17 @@
 
   body {
     @apply bg-background text-foreground;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
   }
 }
 
 .stats-card {
-  @apply p-4 sm:p-6 rounded-lg border bg-card text-card-foreground shadow-sm;
+  @apply p-6 rounded-lg border bg-card text-card-foreground shadow-sm;
 }
 
 .dashboard-section {
-  @apply mb-4 sm:mb-8;
+  @apply mb-8;
 }
 
 .dashboard-section-title {
-  @apply text-lg sm:text-xl font-semibold mb-3 sm:mb-4;
-}
-
-.text-profit {
-  @apply text-aktivGreen-base;
-}
-
-.text-loss {
-  @apply text-red-500;
-}
-
-.bg-profit {
-  @apply bg-aktiv-success;
-}
-
-.bg-loss {
-  @apply bg-red-100;
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-in {
-  animation: fade-in 0.5s ease-out forwards;
-}
-
-.bg-green-gradient {
-  @apply bg-gradient-to-r from-aktivGreen-base to-aktivGreen-tertiary;
-}
-
-.bg-light-green-gradient {
-  @apply bg-gradient-to-r from-aktivGreen-light to-aktivGreen-base;
-}
-
-.download-card {
-  @apply rounded-xl overflow-hidden shadow-lg border border-aktivGreen-base/20 transition-all duration-300 hover:shadow-xl;
-}
-
-.download-icon {
-  @apply p-3 sm:p-4 rounded-full bg-opacity-20 text-white;
-}
-
-.platform-label {
-  @apply text-xs uppercase tracking-wider font-semibold opacity-70;
-}
-
-.download-count {
-  @apply text-2xl sm:text-3xl md:text-4xl font-bold;
-}
-
-.download-text {
-  @apply text-xs sm:text-sm opacity-75;
-}
-
-.modern-card {
-  @apply rounded-xl border border-gray-100 shadow-md hover:shadow-lg transition-all duration-300;
-}
-
-.modern-button {
-  @apply rounded-lg px-3 py-1.5 sm:px-4 sm:py-2 font-medium transition-all duration-200 hover:shadow-md;
-}
-
-.status-indicator {
-  @apply flex items-center gap-1 text-sm font-medium;
-}
-
-.status-indicator-dot {
-  @apply w-2 h-2 rounded-full;
-}
-
-.status-open {
-  @apply text-aktiv-onSuccess;
-}
-
-.status-open .status-indicator-dot {
-  @apply bg-aktiv-onSuccess;
-}
-
-.server-progress {
-  @apply h-2 rounded-full bg-gray-100 overflow-hidden;
-}
-
-.server-progress-bar {
-  @apply h-full bg-gradient-to-r from-aktivGreen-base to-aktivGreen-secondary;
-}
-
-.cost-grid {
-  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4;
-}
-
-.cost-item {
-  @apply p-3 sm:p-4 rounded-lg border border-gray-100 flex items-center gap-3;
-}
-
-.responsive-grid {
-  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4;
-}
-
-.responsive-flex {
-  @apply flex flex-col sm:flex-row;
-}
-
-.responsive-padding {
-  @apply p-3 sm:p-4 md:p-6;
-}
-
-.responsive-margin {
-  @apply m-3 sm:m-4 md:m-6;
-}
-
-.responsive-table-container {
-  @apply w-full overflow-x-auto;
-}
-
-.responsive-heading {
-  @apply text-xl sm:text-2xl md:text-3xl font-bold;
-}
-
-.responsive-title {
-  @apply text-lg sm:text-xl font-semibold;
-}
-
-.responsive-subtitle {
-  @apply text-base sm:text-lg font-medium;
-}
-
-.responsive-text {
-  @apply text-sm sm:text-base;
-}
-
-.responsive-gap {
-  @apply gap-2 sm:gap-4 md:gap-6;
-}
-
-.responsive-full-width {
-  @apply w-full;
-}
-
-.responsive-auto-width {
-  @apply w-full sm:w-auto;
-}
-
-.responsive-half-width {
-  @apply w-full sm:w-1/2;
-}
-
-.responsive-third-width {
-  @apply w-full sm:w-1/2 md:w-1/3;
+  @apply text-xl font-semibold mb-4;
 }

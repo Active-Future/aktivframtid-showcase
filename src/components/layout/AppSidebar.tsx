@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
@@ -13,7 +12,6 @@ import {
 } from "@/components/ui/sidebar";
 import { LayoutDashboard, Users, BarChart3, Server } from "lucide-react";
 import { cn } from "@/lib/utils";
-import Logo from "./Logo";
 
 type SidebarProps = {
   sidebarCollapsed: boolean;
@@ -21,6 +19,12 @@ type SidebarProps = {
 
 export function AppSidebar({ sidebarCollapsed }: SidebarProps) {
   const location = useLocation();
+
+  // Only apply collapsed state on desktop (md and above)
+  // Always expanded on mobile
+  const isCollapsed = window.matchMedia("(min-width: 768px)").matches
+    ? sidebarCollapsed
+    : false;
 
   const mainMenuItems = [
     {
@@ -48,24 +52,24 @@ export function AppSidebar({ sidebarCollapsed }: SidebarProps) {
   return (
     <Sidebar
       className={cn(
-        "z-40 transition-all duration-300 bg-aktivGreen-base bg-opacity-10 border-r border-aktivGreen-base/20",
-        sidebarCollapsed ? "w-16" : "w-64"
+        "transition-all duration-300  bg-aktivGreen-base/5",
+        isCollapsed ? "w-16" : "w-64"
       )}
     >
-      <div className="p-3 flex items-center justify-start h-16 border-b border-aktivGreen-base border-opacity-20">
-        {!sidebarCollapsed ? (
-          <Logo className="ml-0 h-6" />
-        ) : (
-          <img 
-            src="/lovable-uploads/af-red-with-text.png" 
-            alt="AF Logo" 
-            className="h-6" 
+      <div className="p-3 flex items-center justify-center h-16 border-b">
+        {!isCollapsed ? (
+          <img
+            src="src/assets/images/logo_with_text.png"
+            alt="Logo"
+            className="w-32 h-auto object-contain mx-auto my-4"
           />
+        ) : (
+          <Users size={28} className="text-primary" />
         )}
       </div>
       <SidebarContent>
         <SidebarGroup>
-          {!sidebarCollapsed && <SidebarGroupLabel className="text-aktivGreen-quaternary">Main</SidebarGroupLabel>}
+          {!isCollapsed && <SidebarGroupLabel>Main</SidebarGroupLabel>}
           <SidebarGroupContent>
             <SidebarMenu>
               {mainMenuItems.map((item) => (
@@ -78,13 +82,13 @@ export function AppSidebar({ sidebarCollapsed }: SidebarProps) {
                         location.pathname === item.url ||
                           (item.url !== "/" &&
                             location.pathname.startsWith(item.url))
-                          ? "text-aktivGreen-tertiary font-medium"
-                          : "text-aktivGreen-quaternary",
-                        sidebarCollapsed ? "justify-center" : ""
+                          ? "text-primary font-medium"
+                          : "",
+                        isCollapsed ? "justify-center" : ""
                       )}
                     >
                       <item.icon size={20} />
-                      {!sidebarCollapsed && <span>{item.title}</span>}
+                      {!isCollapsed && <span>{item.title}</span>}
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>

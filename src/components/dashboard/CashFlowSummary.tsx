@@ -36,9 +36,7 @@ const SummaryCard = ({
           <div
             className={cn(
               "p-3 rounded-full",
-              trend === "up"
-                ? "bg-green-100 text-profit"
-                : "bg-red-100 text-loss"
+              trend === "up" ? "bg-green-50 text-profit" : "bg-red-50 text-loss"
             )}
           >
             {icon}
@@ -131,7 +129,7 @@ const CashFlowSummary = ({
             <div
               className={cn(
                 "p-3 rounded-full",
-                isProfit ? "bg-green-100 text-profit" : "bg-red-100 text-loss"
+                isProfit ? "bg-green-50 text-profit" : "bg-red-50 text-loss"
               )}
             >
               {isProfit ? <TrendingUpIcon /> : <TrendingDownIcon />}
