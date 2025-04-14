@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/sidebar";
 import { LayoutDashboard, Users, BarChart3, Server } from "lucide-react";
 import { cn } from "@/lib/utils";
-
+import logoImage from "@/assets/images/logo_with_text.png";
 type SidebarProps = {
   sidebarCollapsed: boolean;
 };
@@ -59,10 +59,10 @@ export function AppSidebar({ sidebarCollapsed }: SidebarProps) {
       <div className="p-3 flex items-center justify-center h-16 border-b">
         {!isCollapsed ? (
           <img
-            src="src/assets/images/logo_with_text.png"
-            alt="Logo"
-            className="w-32 h-auto object-contain mx-auto my-4"
-          />
+  src={logoImage}
+  alt="Logo"
+  className="w-32 h-auto object-contain mx-auto my-4"
+/>
         ) : (
           <Users size={28} className="text-primary" />
         )}
