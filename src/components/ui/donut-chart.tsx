@@ -1,3 +1,4 @@
+
 import * as React from "react";
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
 import { ChartContainer, ChartTooltipContent, ChartConfig } from "./chart";
@@ -23,7 +24,8 @@ export const DonutChart = ({
 }: DonutChartProps) => {
   // Create config for the chart tooltip
   const chartConfig: ChartConfig = data.reduce((acc, item, index) => {
-    acc[item[nameKey as keyof typeof item] as string] = {
+    const itemName = String(item[nameKey as keyof typeof item]);
+    acc[itemName] = {
       color: colors[index % colors.length],
     };
     return acc;
