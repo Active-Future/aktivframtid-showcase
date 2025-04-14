@@ -1,3 +1,4 @@
+
 import React from "react";
 import {
   ArrowUpIcon,
@@ -26,17 +27,17 @@ const SummaryCard = ({
   className,
 }: SummaryCardProps) => {
   return (
-    <Card className={cn("transition-all hover:shadow-md", className)}>
+    <Card className={cn("transition-all hover:shadow-md border-aktivGreen-base/20", className)}>
       <CardContent className="p-6">
         <div className="flex justify-between items-start">
           <div>
             <p className="text-sm font-medium text-muted-foreground">{title}</p>
-            <h3 className="text-2xl font-bold mt-1">{value}</h3>
+            <h3 className="text-2xl font-bold mt-1 text-aktivGreen-quaternary">{value}</h3>
           </div>
           <div
             className={cn(
               "p-3 rounded-full",
-              trend === "up" ? "bg-green-50 text-profit" : "bg-red-50 text-loss"
+              trend === "up" ? "bg-aktivGreen-base/10 text-profit" : "bg-red-50 text-loss"
             )}
           >
             {icon}
@@ -105,7 +106,7 @@ const CashFlowSummary = ({
 
       <Card
         className={cn(
-          "transition-all hover:shadow-md animate-fade-in [animation-delay:300ms]",
+          "transition-all hover:shadow-md animate-fade-in [animation-delay:300ms] border-aktivGreen-base/20",
           isProfit ? "border-profit/20" : "border-loss/20"
         )}
       >
@@ -129,7 +130,7 @@ const CashFlowSummary = ({
             <div
               className={cn(
                 "p-3 rounded-full",
-                isProfit ? "bg-green-50 text-profit" : "bg-red-50 text-loss"
+                isProfit ? "bg-aktivGreen-base/10 text-profit" : "bg-red-50 text-loss"
               )}
             >
               {isProfit ? <TrendingUpIcon /> : <TrendingDownIcon />}

@@ -1,45 +1,49 @@
-import React from "react";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Card, CardContent } from "@/components/ui/card";
+
+import React, { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 type TimeFilterProps = {
   onFilterChange: (period: string) => void;
 };
 
 const TimeFilter = ({ onFilterChange }: TimeFilterProps) => {
+  const [selectedFilter, setSelectedFilter] = useState("thisWeek");
+
+  const handleFilterClick = (filter: string) => {
+    setSelectedFilter(filter);
+    onFilterChange(filter);
+  };
+
+  const filters = [
+    { id: "thisWeek", label: "This Week" },
+    { id: "lastWeek", label: "Last Week" },
+    { id: "thisMonth", label: "This Month" },
+    { id: "thisQuarter", label: "This Quarter" },
+    { id: "thisYear", label: "This Year" },
+  ];
+
   return (
-    //ADD COLOR HERE IF HE WANTS FOR THE CARD OF TIME FILTER
-    <Card className="mb-6 animate-fade-in">
-      <CardContent className="p-4">
-        <div className="flex items-center justify-between">
-          <h3 className="text-sm font-medium">Time Period:</h3>
-          <Select defaultValue="thisWeek" onValueChange={onFilterChange}>
-            <SelectTrigger
-              className="w-[180px] ring-offset-0 focus:ring-0 focus:ring-offset-0"
-              style={{ backgroundColor: "rgb(200,212,100)" }}
-            >
-              <SelectValue
-                placeholder="Select time period"
-                className="text-white"
-              />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="today">Today</SelectItem>
-              <SelectItem value="thisWeek">This Week</SelectItem>
-              <SelectItem value="thisMonth">This Month</SelectItem>
-              <SelectItem value="thisQuarter">This Quarter</SelectItem>
-              <SelectItem value="thisYear">This Year</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-      </CardContent>
-    </Card>
+    <div className="flex overflow-x-auto pb-4 mb-6 no-scrollbar">
+      <div className="flex space-x-2">
+        {filters.map((filter) => (
+          <Button
+            key={filter.id}
+            variant="outline"
+            size="sm"
+            onClick={() => handleFilterClick(filter.id)}
+            className={cn(
+              "border-aktivGreen-base/20 text-aktivGreen-quaternary transition-all whitespace-nowrap",
+              selectedFilter === filter.id
+                ? "bg-aktivGreen-base text-white hover:bg-aktivGreen-base/90"
+                : "bg-background hover:bg-aktivGreen-base/10"
+            )}
+          >
+            {filter.label}
+          </Button>
+        ))}
+      </div>
+    </div>
   );
 };
 

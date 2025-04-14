@@ -34,11 +34,11 @@ const expenseTransactions = mockAllTransactions.filter(t => t.type === 'expense'
 const Transactions = () => {
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-6">Transactions</h1>
+      <h1 className="text-2xl font-bold mb-6 text-aktivGreen-quaternary">Transactions</h1>
       
-      <Card>
-        <CardHeader>
-          <CardTitle>Transaction History</CardTitle>
+      <Card className="border border-aktivGreen-base/20 shadow-md">
+        <CardHeader className="bg-aktivGreen-base/10 border-b border-aktivGreen-base/20">
+          <CardTitle className="text-aktivGreen-quaternary">Transaction History</CardTitle>
         </CardHeader>
         <CardContent>
           <Tabs defaultValue="all">

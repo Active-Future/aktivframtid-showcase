@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
+import React from "react";
 import {
   Table,
   TableBody,
@@ -8,16 +8,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { ArrowUpDown, Search } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { TrendingUp, TrendingDown } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
 type Transaction = {
@@ -34,184 +26,67 @@ type TransactionsTableProps = {
 };
 
 const TransactionsTable = ({ transactions }: TransactionsTableProps) => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [filteredTransactions, setFilteredTransactions] =
-    useState(transactions);
-  const [sortConfig, setSortConfig] = useState<{
-    key: keyof Transaction;
-    direction: "ascending" | "descending";
-  } | null>({ key: "date", direction: "descending" });
-
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const term = e.target.value;
-    setSearchTerm(term);
-
-    if (term.trim() === "") {
-      setFilteredTransactions(transactions);
-    } else {
-      const filtered = transactions.filter(
-        (transaction) =>
-          transaction.description.toLowerCase().includes(term.toLowerCase()) ||
-          transaction.category.toLowerCase().includes(term.toLowerCase())
-      );
-      setFilteredTransactions(filtered);
-    }
-  };
-
-  const handleSort = (key: keyof Transaction) => {
-    let direction: "ascending" | "descending" = "ascending";
-
-    if (
-      sortConfig &&
-      sortConfig.key === key &&
-      sortConfig.direction === "ascending"
-    ) {
-      direction = "descending";
-    }
-
-    const sortedData = [...filteredTransactions].sort((a, b) => {
-      if (a[key] < b[key]) return direction === "ascending" ? -1 : 1;
-      if (a[key] > b[key]) return direction === "ascending" ? 1 : -1;
-      return 0;
-    });
-
-    setFilteredTransactions(sortedData);
-    setSortConfig({ key, direction });
-  };
-
-  const handleCategoryFilter = (category: string) => {
-    if (category === "all") {
-      setFilteredTransactions(transactions);
-    } else {
-      const filtered = transactions.filter(
-        (transaction) => transaction.category === category
-      );
-      setFilteredTransactions(filtered);
-    }
-  };
-
-  // Extract unique categories for filter
-  const categories = [
-    "all",
-    ...Array.from(new Set(transactions.map((t) => t.category))),
-  ];
-
   return (
-    <Card className="dashboard-section animate-fade-in [animation-delay:600ms]">
-      <CardHeader>
-        <div className="flex flex-col md:flex-row md:items-center justify-between space-y-2 md:space-y-0">
-          <CardTitle>Recent Transactions</CardTitle>
-          <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2">
-            <div className="relative">
-              <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-              <Input
-                placeholder="Search transactions..."
-                className="pl-8 w-full md:w-[200px]"
-                value={searchTerm}
-                onChange={handleSearch}
-              />
-            </div>
-            <Select defaultValue="all" onValueChange={handleCategoryFilter}>
-              <SelectTrigger className="w-full md:w-[150px]">
-                <SelectValue placeholder="Category" />
-              </SelectTrigger>
-              <SelectContent>
-                {categories.map((category) => (
-                  <SelectItem key={category} value={category}>
-                    {category.charAt(0).toUpperCase() + category.slice(1)}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-        </div>
-      </CardHeader>
-      <CardContent>
-        <div className="rounded-md border">
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>
-                  <Button
-                    variant="ghost"
-                    onClick={() => handleSort("date")}
-                    className="flex items-center"
+    <div className="dashboard-section">
+      <h2 className="dashboard-section-title text-aktivGreen-quaternary">Latest Transactions</h2>
+      <div className="rounded-lg border border-aktivGreen-base/20 overflow-hidden">
+        <Table>
+          <TableHeader className="bg-aktivGreen-base/10">
+            <TableRow>
+              <TableHead>Date</TableHead>
+              <TableHead>Description</TableHead>
+              <TableHead>Category</TableHead>
+              <TableHead>Type</TableHead>
+              <TableHead className="text-right">Amount</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {transactions.map((transaction) => (
+              <TableRow key={transaction.id} className="hover:bg-aktivGreen-base/5">
+                <TableCell>{transaction.date}</TableCell>
+                <TableCell>{transaction.description}</TableCell>
+                <TableCell>
+                  <Badge
+                    variant="outline"
+                    className="bg-aktivGreen-base/10 text-aktivGreen-tertiary border-aktivGreen-base/20"
                   >
-                    Date
-                    <ArrowUpDown size={14} className="ml-1" />
-                  </Button>
-                </TableHead>
-                <TableHead>
-                  <Button
-                    variant="ghost"
-                    onClick={() => handleSort("description")}
-                    className="flex items-center"
+                    {transaction.category}
+                  </Badge>
+                </TableCell>
+                <TableCell>
+                  <div
+                    className={cn(
+                      "flex items-center space-x-1",
+                      transaction.type === "income"
+                        ? "text-profit"
+                        : "text-loss"
+                    )}
                   >
-                    Description
-                    <ArrowUpDown size={14} className="ml-1" />
-                  </Button>
-                </TableHead>
-                <TableHead>
-                  <Button
-                    variant="ghost"
-                    onClick={() => handleSort("category")}
-                    className="flex items-center"
-                  >
-                    Category
-                    <ArrowUpDown size={14} className="ml-1" />
-                  </Button>
-                </TableHead>
-                <TableHead className="text-right">
-                  <Button
-                    variant="ghost"
-                    onClick={() => handleSort("amount")}
-                    className="flex items-center justify-end ml-auto"
-                  >
-                    Amount
-                    <ArrowUpDown size={14} className="ml-1" />
-                  </Button>
-                </TableHead>
+                    {transaction.type === "income" ? (
+                      <TrendingUp size={16} />
+                    ) : (
+                      <TrendingDown size={16} />
+                    )}
+                    <span className="capitalize">{transaction.type}</span>
+                  </div>
+                </TableCell>
+                <TableCell
+                  className={cn(
+                    "text-right font-medium",
+                    transaction.type === "income"
+                      ? "text-profit"
+                      : "text-loss"
+                  )}
+                >
+                  {transaction.type === "income" ? "+" : "-"}
+                  {transaction.amount.toLocaleString()} SEK
+                </TableCell>
               </TableRow>
-            </TableHeader>
-            <TableBody>
-              {filteredTransactions.length === 0 ? (
-                <TableRow>
-                  <TableCell
-                    colSpan={4}
-                    className="text-center py-10 text-muted-foreground"
-                  >
-                    No transactions found
-                  </TableCell>
-                </TableRow>
-              ) : (
-                filteredTransactions.map((transaction) => (
-                  <TableRow key={transaction.id}>
-                    <TableCell>{transaction.date}</TableCell>
-                    <TableCell>{transaction.description}</TableCell>
-                    <TableCell>
-                      <span className="inline-block px-2 py-1 rounded-full text-xs font-medium bg-secondary">
-                        {transaction.category}
-                      </span>
-                    </TableCell>
-                    <TableCell
-                      className={cn(
-                        "text-right font-medium",
-                        transaction.type === "income"
-                          ? "text-profit"
-                          : "text-loss"
-                      )}
-                    >
-                      {transaction.type === "income" ? "+" : "-"}
-                      {Math.abs(transaction.amount).toLocaleString()} SEK
-                    </TableCell>
-                  </TableRow>
-                ))
-              )}
-            </TableBody>
-          </Table>
-        </div>
-      </CardContent>
-    </Card>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
+    </div>
   );
 };
 

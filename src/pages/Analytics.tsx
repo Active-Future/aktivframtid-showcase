@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -61,12 +62,12 @@ const profitData = [
 const Analytics = () => {
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-6">Analytics</h1>
+      <h1 className="text-2xl font-bold mb-6 text-aktivGreen-quaternary">Analytics</h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-        <Card>
-          <CardHeader>
-            <CardTitle>Monthly Cash Flow</CardTitle>
+        <Card className="border border-aktivGreen-base/20 shadow-md">
+          <CardHeader className="bg-aktivGreen-base/10 border-b border-aktivGreen-base/20">
+            <CardTitle className="text-aktivGreen-quaternary">Monthly Cash Flow</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="h-[300px]">
@@ -86,9 +87,9 @@ const Analytics = () => {
           </CardContent>
         </Card>
 
-        <Card>
-          <CardHeader>
-            <CardTitle>Expense Breakdown</CardTitle>
+        <Card className="border border-aktivGreen-base/20 shadow-md">
+          <CardHeader className="bg-aktivGreen-base/10 border-b border-aktivGreen-base/20">
+            <CardTitle className="text-aktivGreen-quaternary">Expense Breakdown</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="h-[300px]">
@@ -120,9 +121,9 @@ const Analytics = () => {
         </Card>
       </div>
 
-      <Card className="mb-6">
-        <CardHeader>
-          <CardTitle>Detailed Analysis</CardTitle>
+      <Card className="mb-6 border border-aktivGreen-base/20 shadow-md">
+        <CardHeader className="bg-aktivGreen-base/10 border-b border-aktivGreen-base/20">
+          <CardTitle className="text-aktivGreen-quaternary">Detailed Analysis</CardTitle>
         </CardHeader>
         <CardContent>
           <Tabs defaultValue="incomeVsExpenses">
@@ -166,25 +167,25 @@ const Analytics = () => {
                 </ResponsiveContainer>
               </div>
               <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="flex items-center p-4 border rounded-lg">
+                <div className="flex items-center p-4 border rounded-lg border-aktivGreen-base/20">
                   <Circle
                     className="text-profit mr-2"
                     size={16}
                     fill="#a0b41c"
                   />
                   <div>
-                    <h3 className="text-sm font-medium">Income Growth</h3>
-                    <p className="text-2xl font-bold">+35.3%</p>
+                    <h3 className="text-sm font-medium text-aktivGreen-quaternary">Income Growth</h3>
+                    <p className="text-2xl font-bold text-aktivGreen-tertiary">+35.3%</p>
                     <p className="text-sm text-muted-foreground">
                       From 2020 to 2023
                     </p>
                   </div>
                 </div>
-                <div className="flex items-center p-4 border rounded-lg">
+                <div className="flex items-center p-4 border rounded-lg border-aktivGreen-base/20">
                   <Circle className="text-loss mr-2" size={16} fill="#ef4444" />
                   <div>
-                    <h3 className="text-sm font-medium">Expense Growth</h3>
-                    <p className="text-2xl font-bold">+26.2%</p>
+                    <h3 className="text-sm font-medium text-aktivGreen-quaternary">Expense Growth</h3>
+                    <p className="text-2xl font-bold text-loss">+26.2%</p>
                     <p className="text-sm text-muted-foreground">
                       From 2020 to 2023
                     </p>
@@ -213,7 +214,7 @@ const Analytics = () => {
                   </BarChart>
                 </ResponsiveContainer>
               </div>
-              <div className="mt-4 p-4 border rounded-lg">
+              <div className="mt-4 p-4 border rounded-lg border-aktivGreen-base/20">
                 <div className="flex items-center">
                   <Circle
                     className="text-primary mr-2"
@@ -221,8 +222,8 @@ const Analytics = () => {
                     fill="#a0b41c"
                   />
                   <div>
-                    <h3 className="text-sm font-medium">Profit Growth</h3>
-                    <p className="text-2xl font-bold">+65.0%</p>
+                    <h3 className="text-sm font-medium text-aktivGreen-quaternary">Profit Growth</h3>
+                    <p className="text-2xl font-bold text-aktivGreen-tertiary">+65.0%</p>
                     <p className="text-sm text-muted-foreground">
                       From 2020 to 2023
                     </p>

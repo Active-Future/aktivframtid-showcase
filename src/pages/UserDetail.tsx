@@ -1,3 +1,4 @@
+
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import {
@@ -15,8 +16,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Button } from "@/components/ui/button";
-import { ArrowLeft, PieChart } from "lucide-react";
+import { PieChart } from "lucide-react";
 import { users } from "@/lib/mockData";
 import { DonutChart } from "@/components/ui/donut-chart";
 
@@ -29,10 +29,7 @@ const UserDetail = () => {
   if (!user) {
     return (
       <div className="flex flex-col items-center justify-center h-96">
-        <h2 className="text-2xl font-bold mb-4">User not found</h2>
-        <Button onClick={() => navigate("/accounts")}>
-          Return to Accounts
-        </Button>
+        <h2 className="text-2xl font-bold mb-4 text-aktivGreen-quaternary">User not found</h2>
       </div>
     );
   }
@@ -73,26 +70,17 @@ const UserDetail = () => {
 
   return (
     <div>
-      <Button
-        variant="ghost"
-        className="mb-6"
-        onClick={() => navigate("/accounts")}
-      >
-        <ArrowLeft className="mr-2 h-4 w-4" />
-        Back to Accounts
-      </Button>
-
       <div className="flex flex-col md:flex-row items-start gap-6 mb-6">
-        <Card className="w-full md:w-1/3">
-          <CardHeader>
-            <CardTitle>{user.name}</CardTitle>
+        <Card className="w-full md:w-1/3 border-aktivGreen-base/20">
+          <CardHeader className="bg-aktivGreen-base/10 border-b border-aktivGreen-base/20">
+            <CardTitle className="text-aktivGreen-quaternary">{user.name}</CardTitle>
             <CardDescription>{user.personnummer}</CardDescription>
           </CardHeader>
-          <CardContent>
+          <CardContent className="pt-6">
             <div className="space-y-2">
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Total Spending:</span>
-                <span className="font-medium">
+                <span className="font-medium text-aktivGreen-quaternary">
                   {getTotalSpending().toLocaleString()} SEK
                 </span>
               </div>
@@ -100,12 +88,11 @@ const UserDetail = () => {
           </CardContent>
         </Card>
 
-        <Card className="w-full md:w-2/3">
-          <CardHeader>
-            <CardTitle>Spending by Category</CardTitle>
+        <Card className="w-full md:w-2/3 border-aktivGreen-base/20">
+          <CardHeader className="bg-aktivGreen-base/10 border-b border-aktivGreen-base/20">
+            <CardTitle className="text-aktivGreen-quaternary">Spending by Category</CardTitle>
           </CardHeader>
           <CardContent className="flex justify-center pb-10">
-            {/* Added padding-bottom */}
             <div className="w-full max-w-xs">
               <DonutChart
                 data={chartData}
@@ -121,14 +108,14 @@ const UserDetail = () => {
         </Card>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Purchase History</CardTitle>
+      <Card className="border-aktivGreen-base/20">
+        <CardHeader className="bg-aktivGreen-base/10 border-b border-aktivGreen-base/20">
+          <CardTitle className="text-aktivGreen-quaternary">Purchase History</CardTitle>
         </CardHeader>
-        <CardContent>
-          <div className="rounded-md border">
+        <CardContent className="pt-6">
+          <div className="rounded-md border border-aktivGreen-base/20">
             <Table>
-              <TableHeader>
+              <TableHeader className="bg-aktivGreen-base/5">
                 <TableRow>
                   <TableHead>Date</TableHead>
                   <TableHead>Description</TableHead>
@@ -148,7 +135,7 @@ const UserDetail = () => {
                   </TableRow>
                 ) : (
                   user.purchases.map((purchase, index) => (
-                    <TableRow key={index}>
+                    <TableRow key={index} className="hover:bg-aktivGreen-base/5">
                       <TableCell>{purchase.date}</TableCell>
                       <TableCell>{purchase.description}</TableCell>
                       <TableCell>
@@ -163,7 +150,7 @@ const UserDetail = () => {
                           {purchase.category}
                         </span>
                       </TableCell>
-                      <TableCell className="text-right font-medium">
+                      <TableCell className="text-right font-medium text-aktivGreen-quaternary">
                         {purchase.amount.toLocaleString()} SEK
                       </TableCell>
                     </TableRow>

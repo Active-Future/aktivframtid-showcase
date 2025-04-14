@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/layout/AppSidebar";
@@ -14,13 +15,13 @@ const DashboardLayout = () => {
         <AppSidebar sidebarCollapsed={sidebarCollapsed} />
         <div className="flex-1 flex flex-col min-h-screen text-left">
           <div
-            className="p-4 flex justify-between items-center text-aktivGreen-quaternary  bg-aktivGreen-base/5"
+            className="p-4 flex justify-between items-center bg-aktivGreen-base/10 border-b border-aktivGreen-base/20"
             style={{
               paddingBottom: "19px",
             }}
           >
             <div className="flex-1 md:ml-4">
-              <h1 className="text-xl font-bold">Cash Flow Dashboard</h1>
+              <h1 className="text-xl font-bold text-aktivGreen-quaternary">Cash Flow Dashboard</h1>
             </div>
 
             <div className="flex items-center gap-2">
@@ -29,7 +30,7 @@ const DashboardLayout = () => {
               </span>
             </div>
           </div>
-          <main className="border-t" style={{ padding: 35 }}>
+          <main className="p-4 md:p-6 lg:p-8">
             <Outlet />
           </main>
         </div>

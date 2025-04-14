@@ -1,3 +1,4 @@
+
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
 @tailwind base;
@@ -96,8 +97,19 @@
   }
 }
 
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
 .stats-card {
-  @apply p-6 rounded-lg border bg-card text-card-foreground shadow-sm;
+  @apply p-6 rounded-lg border border-aktivGreen-base/20 bg-card text-card-foreground shadow-sm;
 }
 
 .dashboard-section {
@@ -105,5 +117,6 @@
 }
 
 .dashboard-section-title {
-  @apply text-xl font-semibold mb-4;
+  @apply text-xl font-semibold mb-4 text-aktivGreen-quaternary;
 }
+

@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import CashFlowSummary from "@/components/dashboard/CashFlowSummary";
 import CashFlowCharts from "@/components/dashboard/CashFlowCharts";
@@ -163,7 +164,7 @@ const Dashboard = () => {
         spendingsTrend="up"
       />
 
-      <h2 className="dashboard-section-title">Financial Overview</h2>
+      <h2 className="dashboard-section-title text-aktivGreen-quaternary">Financial Overview</h2>
       <CashFlowCharts
         expenseData={mockExpenseData}
         timeSeriesData={mockTimeSeriesData}
