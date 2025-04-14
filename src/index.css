@@ -109,14 +109,28 @@
 }
 
 .stats-card {
-  @apply p-6 rounded-lg border border-aktivGreen-base/20 bg-card text-card-foreground shadow-sm;
+  @apply p-4 sm:p-6 rounded-lg border border-aktivGreen-base/20 bg-card text-card-foreground shadow-sm;
 }
 
 .dashboard-section {
-  @apply mb-8;
+  @apply mb-6 sm:mb-8;
 }
 
 .dashboard-section-title {
-  @apply text-xl font-semibold mb-4 text-aktivGreen-quaternary;
+  @apply text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-aktivGreen-quaternary;
 }
 
+/* Mobile optimization */
+@media (max-width: 640px) {
+  table {
+    @apply table-fixed;
+  }
+  
+  th, td {
+    @apply px-2 py-2 text-sm;
+  }
+  
+  .truncate-cell {
+    @apply max-w-[120px] truncate;
+  }
+}
