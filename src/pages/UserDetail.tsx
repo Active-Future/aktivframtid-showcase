@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import {
@@ -17,8 +16,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { FileText } from "lucide-react";
-import { PieChart } from "lucide-react";
+import { FileText, ChevronLeft } from "lucide-react";
 import { users } from "@/lib/mockData";
 import { DonutChart } from "@/components/ui/donut-chart";
 
@@ -70,8 +68,24 @@ const UserDetail = () => {
     return colorMap[category] || "#a0b41c";
   };
 
+  const handleGoBack = () => {
+    navigate('/accounts');
+  };
+
   return (
     <div>
+      <div className="flex items-center gap-4 mb-6">
+        <Button 
+          variant="outline" 
+          size="icon" 
+          onClick={handleGoBack}
+          className="border-aktivGreen-base/20 text-aktivGreen-quaternary hover:bg-aktivGreen-base/10"
+        >
+          <ChevronLeft className="h-4 w-4" />
+        </Button>
+        <h2 className="text-2xl font-bold text-aktivGreen-quaternary">User Details</h2>
+      </div>
+
       <div className="flex flex-col md:flex-row items-start gap-6 mb-6">
         <Card className="w-full md:w-1/3 border-aktivGreen-base/20">
           <CardHeader className="bg-aktivGreen-base/10 border-b border-aktivGreen-base/20">
