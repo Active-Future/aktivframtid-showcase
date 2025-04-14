@@ -36,6 +36,7 @@ const DashboardLayout = () => {
         <div className="flex-1 flex flex-col min-h-screen text-left">
           <div
             className="p-4 flex justify-between items-center bg-aktivGreen-base/10 border-b border-aktivGreen-base/20"
+            style={{ paddingBottom: "19px" }}
           >
             {isMobile && (
               <Button 
