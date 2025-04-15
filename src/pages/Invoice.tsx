@@ -71,9 +71,9 @@ const Invoice = () => {
               <p className="text-sm text-muted-foreground">#{generateInvoiceNumber()}</p>
             </div>
             <div className="text-right mt-4 sm:mt-0">
-              <p className="text-sm font-medium">Aktiv Cash Flow</p>
-              <p className="text-sm text-muted-foreground">Stockholm, Sweden</p>
-              <p className="text-sm text-muted-foreground">info@aktivcashflow.se</p>
+              <p className="text-sm font-medium">Aktiv Framtid</p>
+              <p className="text-sm text-muted-foreground">Göteborg, Sweden</p>
+              <p className="text-sm text-muted-foreground">info@aktivframtid.se</p>
             </div>
           </div>
         </CardHeader>
@@ -139,12 +139,10 @@ const Invoice = () => {
           <div className="w-full py-4">
             <h3 className="text-sm font-medium text-aktivGreen-quaternary mb-2">Payment Information:</h3>
             <p className="text-sm text-muted-foreground">Please transfer the total amount to:</p>
-            <p className="text-sm">Aktiv Cash Flow AB</p>
-            <p className="text-sm">IBAN: SE45 5000 0000 0123 4567 8901</p>
+            <p className="text-sm">Aktiv Framtid</p>
             <p className="text-sm">Reference: {generateInvoiceNumber()}</p>
           </div>
           <div className="w-full pt-2">
-            <p className="text-xs text-muted-foreground text-center">Thank you for your business!</p>
           </div>
         </CardFooter>
       </Card>
