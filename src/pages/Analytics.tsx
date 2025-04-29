@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -25,12 +24,12 @@ const monthlyData = [
   { month: "Feb", income: 7800, expenses: 5900, profit: 1900 },
   { month: "Mar", income: 9500, expenses: 7100, profit: 2400 },
   { month: "Apr", income: 8900, expenses: 6700, profit: 2200 },
-  { month: "May", income: 9200, expenses: 6500, profit: 2700 },
+  { month: "Maj", income: 9200, expenses: 6500, profit: 2700 },
   { month: "Jun", income: 8700, expenses: 7100, profit: 1600 },
   { month: "Jul", income: 9600, expenses: 7400, profit: 2200 },
   { month: "Aug", income: 10200, expenses: 7800, profit: 2400 },
   { month: "Sep", income: 9800, expenses: 7200, profit: 2600 },
-  { month: "Oct", income: 10500, expenses: 7900, profit: 2600 },
+  { month: "Okt", income: 10500, expenses: 7900, profit: 2600 },
   { month: "Nov", income: 11000, expenses: 8200, profit: 2800 },
   { month: "Dec", income: 12000, expenses: 8800, profit: 3200 },
 ];
@@ -62,12 +61,16 @@ const profitData = [
 const Analytics = () => {
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-6 text-aktivGreen-quaternary">Analys</h1>
+      <h1 className="text-2xl font-bold mb-6 text-aktivGreen-quaternary">
+        Analys
+      </h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
         <Card className="border border-aktivGreen-base/20 shadow-md">
           <CardHeader className="bg-aktivGreen-base/10 border-b border-aktivGreen-base/20">
-            <CardTitle className="text-aktivGreen-quaternary">Månatligt Kassaflöde</CardTitle>
+            <CardTitle className="text-aktivGreen-quaternary">
+              Månatligt Kassaflöde
+            </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="h-[300px]">
@@ -89,7 +92,9 @@ const Analytics = () => {
 
         <Card className="border border-aktivGreen-base/20 shadow-md">
           <CardHeader className="bg-aktivGreen-base/10 border-b border-aktivGreen-base/20">
-            <CardTitle className="text-aktivGreen-quaternary">Utgiftsfördelning</CardTitle>
+            <CardTitle className="text-aktivGreen-quaternary">
+              Utgiftsfördelning
+            </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="h-[300px]">
@@ -123,7 +128,9 @@ const Analytics = () => {
 
       <Card className="mb-6 border border-aktivGreen-base/20 shadow-md">
         <CardHeader className="bg-aktivGreen-base/10 border-b border-aktivGreen-base/20">
-          <CardTitle className="text-aktivGreen-quaternary">Detaljerad Analys</CardTitle>
+          <CardTitle className="text-aktivGreen-quaternary">
+            Detaljerad Analys
+          </CardTitle>
         </CardHeader>
         <CardContent>
           <Tabs defaultValue="incomeVsExpenses">
@@ -174,8 +181,12 @@ const Analytics = () => {
                     fill="#a0b41c"
                   />
                   <div>
-                    <h3 className="text-sm font-medium text-aktivGreen-quaternary">Inkomsttillväxt</h3>
-                    <p className="text-2xl font-bold text-aktivGreen-tertiary">+35.3%</p>
+                    <h3 className="text-sm font-medium text-aktivGreen-quaternary">
+                      Inkomsttillväxt
+                    </h3>
+                    <p className="text-2xl font-bold text-aktivGreen-tertiary">
+                      +35.3%
+                    </p>
                     <p className="text-sm text-muted-foreground">
                       Från 2020 till 2023
                     </p>
@@ -184,7 +195,9 @@ const Analytics = () => {
                 <div className="flex items-center p-4 border rounded-lg border-aktivGreen-base/20">
                   <Circle className="text-loss mr-2" size={16} fill="#ef4444" />
                   <div>
-                    <h3 className="text-sm font-medium text-aktivGreen-quaternary">Utgiftstillväxt</h3>
+                    <h3 className="text-sm font-medium text-aktivGreen-quaternary">
+                      Utgiftstillväxt
+                    </h3>
                     <p className="text-2xl font-bold text-loss">+26.2%</p>
                     <p className="text-sm text-muted-foreground">
                       Från 2020 till 2023
@@ -222,8 +235,12 @@ const Analytics = () => {
                     fill="#a0b41c"
                   />
                   <div>
-                    <h3 className="text-sm font-medium text-aktivGreen-quaternary">Vinsttillväxt</h3>
-                    <p className="text-2xl font-bold text-aktivGreen-tertiary">+65.0%</p>
+                    <h3 className="text-sm font-medium text-aktivGreen-quaternary">
+                      Vinsttillväxt
+                    </h3>
+                    <p className="text-2xl font-bold text-aktivGreen-tertiary">
+                      +65.0%
+                    </p>
                     <p className="text-sm text-muted-foreground">
                       Från 2020 till 2023
                     </p>

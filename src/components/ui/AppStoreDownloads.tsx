@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Apple, PlayCircle } from "lucide-react";
@@ -25,7 +24,7 @@ const AppStoreDownloads = () => {
               </div>
             </div>
             <span className="download-text mt-1 text-sm text-white/80">
-              Total downloads across iOS devices
+              Totalt antal nedladdningar över iOS-enheter
             </span>
           </div>
         </Card>
@@ -47,7 +46,7 @@ const AppStoreDownloads = () => {
                 </div>
               </div>
               <span className="download-text mt-1 text-sm text-white/80">
-                Total downloads across Android devices
+                Totalt antal nedladdningar på Android-enheter
               </span>
             </div>
           </div>

@@ -12,7 +12,11 @@ const mockExpenseData = [
   { name: "Sport cup", value: 2500, color: categoryColors["Sport Cup"] },
   { name: "Utrustning", value: 450, color: categoryColors["Utrustning"] },
   { name: "Medlemsavgift", value: 350, color: categoryColors["Medlemskap"] },
-  { name: "Idrottförsäkring", value: 400, color: categoryColors["Market Sales"] },
+  {
+    name: "Idrottförsäkring",
+    value: 400,
+    color: categoryColors["Market Sales"],
+  },
 ];
 
 const mockTimeSeriesData = [
@@ -20,12 +24,12 @@ const mockTimeSeriesData = [
   { date: "Feb", income: 7800, expenses: 5900 },
   { date: "Mar", income: 9500, expenses: 7100 },
   { date: "Apr", income: 8900, expenses: 6700 },
-  { date: "May", income: 9200, expenses: 6500 },
+  { date: "Maj", income: 9200, expenses: 6500 },
   { date: "Jun", income: 8700, expenses: 7100 },
   { date: "Jul", income: 9600, expenses: 7400 },
   { date: "Aug", income: 10200, expenses: 7800 },
   { date: "Sep", income: 9800, expenses: 7200 },
-  { date: "Oct", income: 10500, expenses: 7900 },
+  { date: "Okt", income: 10500, expenses: 7900 },
   { date: "Nov", income: 11000, expenses: 8200 },
   { date: "Dec", income: 12000, expenses: 8800 },
 ];
@@ -164,7 +168,9 @@ const Dashboard = () => {
         spendingsTrend="up"
       />
 
-      <h2 className="dashboard-section-title text-aktivGreen-quaternary">Finansiell Översikt</h2>
+      <h2 className="dashboard-section-title text-aktivGreen-quaternary">
+        Finansiell Översikt
+      </h2>
       <CashFlowCharts
         expenseData={mockExpenseData}
         timeSeriesData={mockTimeSeriesData}
