@@ -74,7 +74,8 @@ const CashFlowCharts = ({
                       key={`cell-${index}`}
                       fill={
                         categoryColors[entry.name] || 
-                        entry.color
+                        entry.color || 
+                        Object.values(categoryColors)[index % Object.values(categoryColors).length]
                       }
                     />
                   ))}

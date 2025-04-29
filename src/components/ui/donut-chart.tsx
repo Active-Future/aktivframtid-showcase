@@ -19,7 +19,7 @@ export const DonutChart = ({
   outerRadius = 80,
   dataKey = "value",
   nameKey = "name",
-  colors = ["#a0b41c", "#c9db4c", "#8c9e0f", "#d2e07f", "#5e6a0a"],
+  colors = ["#a0b41c", "#8a9919", "#c6d566", "#738015", "#b9cb49"],
   valueFormatter = (value: number) => `${value}`,
 }: DonutChartProps) => {
   // Create config for the chart tooltip

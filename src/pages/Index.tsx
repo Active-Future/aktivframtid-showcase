@@ -1,18 +1,18 @@
-
 import React, { useState } from "react";
 import CashFlowSummary from "@/components/dashboard/CashFlowSummary";
 import CashFlowCharts from "@/components/dashboard/CashFlowCharts";
 import TransactionsTable from "@/components/dashboard/TransactionsTable";
 import TimeFilter from "@/components/dashboard/TimeFilter";
 import AppStoreDownloads from "@/components/ui/AppStoreDownloads";
+import { categoryColors } from "@/lib/mockData";
 
 // Mock data - in a real app, this would come from an API
 const mockExpenseData = [
-  { name: "Lagkassan", value: 1200, color: "#a0b41c" },
-  { name: "Sport cup", value: 2500, color: "#b9cb49" },
-  { name: "Utrustning", value: 450, color: "#8a9919" },
-  { name: "Medlemsavgift", value: 350, color: "#c6d566" },
-  { name: "Idrottförsäkring", value: 400, color: "#738015" },
+  { name: "Lagkassan", value: 1200, color: categoryColors["Team Account"] },
+  { name: "Sport cup", value: 2500, color: categoryColors["Sport Cup"] },
+  { name: "Utrustning", value: 450, color: categoryColors["Utrustning"] },
+  { name: "Medlemsavgift", value: 350, color: categoryColors["Medlemskap"] },
+  { name: "Idrottförsäkring", value: 400, color: categoryColors["Market Sales"] },
 ];
 
 const mockTimeSeriesData = [
