@@ -1,3 +1,4 @@
+
 // Define the purchase type
 export type Purchase = {
   date: string;
@@ -34,6 +35,17 @@ function assignCategory(description: string): string {
   }
   return "Other"; // Default category if no match is found
 }
+
+// Category colors mapping
+export const categoryColors: { [key: string]: string } = {
+  "Sport Cup": "#a0b41c",    // Olive Green
+  "Medlemskap": "#8B5CF6",   // Purple
+  "Utrustning": "#F97316",   // Orange
+  "Market Sales": "#0EA5E9", // Blue
+  "Team Account": "#D946EF", // Pink
+  "Training": "#10B981",     // Teal
+  "Other": "#6B7280",        // Gray
+};
 
 // Mock user data with categories assigned
 export const users: User[] = [

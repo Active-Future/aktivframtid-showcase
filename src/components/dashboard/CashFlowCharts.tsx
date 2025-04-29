@@ -17,8 +17,7 @@ import {
   Bar,
 } from "recharts";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-
-const EXPENSE_COLORS = ["#a0b41c", "#b9cb49", "#8a9919", "#c6d566", "#738015"];
+import { categoryColors } from "@/lib/mockData";
 
 type ExpenseData = {
   name: string;
@@ -74,8 +73,8 @@ const CashFlowCharts = ({
                     <Cell
                       key={`cell-${index}`}
                       fill={
-                        entry.color ||
-                        EXPENSE_COLORS[index % EXPENSE_COLORS.length]
+                        categoryColors[entry.name] || 
+                        entry.color
                       }
                     />
                   ))}

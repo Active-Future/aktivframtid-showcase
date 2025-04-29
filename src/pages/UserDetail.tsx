@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import {
@@ -18,7 +17,7 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { FileText, ChevronLeft } from "lucide-react";
-import { users } from "@/lib/mockData";
+import { users, categoryColors } from "@/lib/mockData";
 import { DonutChart } from "@/components/ui/donut-chart";
 
 const UserDetail = () => {
@@ -57,16 +56,9 @@ const UserDetail = () => {
     );
   };
 
-  // Function to determine category color
+  // Function to determine category color using the categoryColors mapping
   const getCategoryColor = (category: string) => {
-    const colorMap: Record<string, string> = {
-      "Team Accounts": "#a0b41c",
-      Cups: "#c9db4c",
-      Equipment: "#8c9e0f",
-      Memberships: "#d2e07f",
-      "Market Sales": "#5e6a0a",
-    };
-    return colorMap[category] || "#a0b41c";
+    return categoryColors[category] || "#6B7280"; // Default to gray if no color is found
   };
 
   const handleGoBack = () => {
