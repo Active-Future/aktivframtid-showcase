@@ -34,7 +34,7 @@ const Invoice = () => {
   // Generate invoice number using userId, purchase index and date
   const generateInvoiceNumber = () => {
     const dateParts = purchase.date.split('-');
-    return `INV-${userId}${purchaseIndex}-${dateParts[0]}${dateParts[1]}${dateParts[2]}`;
+    return `FAK-${userId}${purchaseIndex}-${dateParts[0]}${dateParts[1]}${dateParts[2]}`;
   };
 
   // Add 30 days to purchase date for due date
