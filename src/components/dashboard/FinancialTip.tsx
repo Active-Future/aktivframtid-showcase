@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { LightbulbIcon } from 'lucide-react';
@@ -16,7 +17,7 @@ const FinancialTip = ({ tip }: FinancialTipProps) => {
             <LightbulbIcon size={18} />
           </div>
           <div>
-            <h3 className="text-sm font-medium mb-1">Tip of the week</h3>
+            <h3 className="text-sm font-medium mb-1">Veckans tips</h3>
             <p className="text-sm text-muted-foreground">{tip}</p>
           </div>
         </div>

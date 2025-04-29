@@ -8,11 +8,11 @@ import AppStoreDownloads from "@/components/ui/AppStoreDownloads";
 
 // Mock data - in a real app, this would come from an API
 const mockExpenseData = [
-  { name: "Team Accounts", value: 1200, color: "#a0b41c" },
-  { name: "Cups", value: 2500, color: "#b9cb49" },
-  { name: "Equipment", value: 450, color: "#8a9919" },
-  { name: "Memberships", value: 350, color: "#c6d566" },
-  { name: "Market Sales", value: 400, color: "#738015" },
+  { name: "lagkassan", value: 1200, color: "#a0b41c" },
+  { name: "sport cup", value: 2500, color: "#b9cb49" },
+  { name: "utrustning", value: 450, color: "#8a9919" },
+  { name: "medlemsavgift", value: 350, color: "#c6d566" },
+  { name: "idrottförsäkring", value: 400, color: "#738015" },
 ];
 
 const mockTimeSeriesData = [
@@ -31,50 +31,50 @@ const mockTimeSeriesData = [
 ];
 
 const mockCategoryComparisonData = [
-  { category: "Team Accounts", income: 9500, expenses: 0 },
-  { category: "Cups", income: 2500, expenses: 0 },
-  { category: "Equipment", income: 0, expenses: 2500 },
-  { category: "Memberships", income: 0, expenses: 1200 },
-  { category: "Market Sales", income: 0, expenses: 450 },
+  { category: "lagkassan", income: 9500, expenses: 0 },
+  { category: "sport cup", income: 2500, expenses: 0 },
+  { category: "utrustning", income: 0, expenses: 2500 },
+  { category: "medlemsavgift", income: 0, expenses: 1200 },
+  { category: "idrottförsäkring", income: 0, expenses: 450 },
 ];
 
 const mockTransactions = [
   {
     id: "1",
     date: "2023-12-01",
-    description: "Monthly Salary",
-    category: "salary",
+    description: "Månadslön",
+    category: "lön",
     amount: 9500,
     type: "income" as const,
   },
   {
     id: "2",
     date: "2023-12-03",
-    description: "Equipment Purchase",
-    category: "equipment",
+    description: "Utrustningsinköp",
+    category: "utrustning",
     amount: 2500,
     type: "expense" as const,
   },
   {
     id: "3",
     date: "2023-12-05",
-    description: "Team Account Fees",
-    category: "team",
+    description: "Lagkassaavgifter",
+    category: "lag",
     amount: 150,
     type: "expense" as const,
   },
   {
     id: "4",
     date: "2023-12-08",
-    description: "Market Sales Revenue",
-    category: "sales",
+    description: "Intäkt från idrottförsäkring",
+    category: "försäljning",
     amount: 1200,
     type: "income" as const,
   },
   {
     id: "5",
     date: "2023-12-10",
-    description: "Cup Purchases",
+    description: "Sport Cup-inköp",
     category: "cups",
     amount: 60,
     type: "expense" as const,
@@ -82,39 +82,39 @@ const mockTransactions = [
   {
     id: "6",
     date: "2023-12-12",
-    description: "Membership Fees",
-    category: "membership",
+    description: "Medlemsavgifter",
+    category: "medlemskap",
     amount: 85,
     type: "expense" as const,
   },
   {
     id: "7",
     date: "2023-12-15",
-    description: "Equipment Rental",
-    category: "equipment",
+    description: "Utrustningshyra",
+    category: "utrustning",
     amount: 1300,
     type: "income" as const,
   },
   {
     id: "8",
     date: "2023-12-18",
-    description: "Team Account Payment",
-    category: "team",
+    description: "Lagkassabetalning",
+    category: "lag",
     amount: 35,
     type: "expense" as const,
   },
   {
     id: "9",
     date: "2023-12-20",
-    description: "Market Sales Revenue",
-    category: "sales",
+    description: "Intäkt från idrottförsäkring",
+    category: "försäljning",
     amount: 120,
     type: "income" as const,
   },
   {
     id: "10",
     date: "2023-12-22",
-    description: "Cup Purchases",
+    description: "Sport Cup-inköp",
     category: "cups",
     amount: 200,
     type: "expense" as const,
@@ -122,16 +122,16 @@ const mockTransactions = [
   {
     id: "11",
     date: "2023-12-25",
-    description: "Membership Renewal",
-    category: "membership",
+    description: "Medlemskapsförnyelse",
+    category: "medlemskap",
     amount: 130,
     type: "expense" as const,
   },
   {
     id: "12",
     date: "2023-12-28",
-    description: "Equipment Purchase",
-    category: "equipment",
+    description: "Utrustningsinköp",
+    category: "utrustning",
     amount: 80,
     type: "expense" as const,
   },
@@ -164,7 +164,7 @@ const Dashboard = () => {
         spendingsTrend="up"
       />
 
-      <h2 className="dashboard-section-title text-aktivGreen-quaternary">Financial Overview</h2>
+      <h2 className="dashboard-section-title text-aktivGreen-quaternary">Finansiell Översikt</h2>
       <CashFlowCharts
         expenseData={mockExpenseData}
         timeSeriesData={mockTimeSeriesData}

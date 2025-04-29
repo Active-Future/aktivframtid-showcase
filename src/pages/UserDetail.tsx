@@ -1,3 +1,4 @@
+
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import {
@@ -29,7 +30,7 @@ const UserDetail = () => {
   if (!user) {
     return (
       <div className="flex flex-col items-center justify-center h-96">
-        <h2 className="text-2xl font-bold mb-4 text-aktivGreen-quaternary">User not found</h2>
+        <h2 className="text-2xl font-bold mb-4 text-aktivGreen-quaternary">Användare hittades inte</h2>
       </div>
     );
   }
@@ -83,7 +84,7 @@ const UserDetail = () => {
         >
           <ChevronLeft className="h-4 w-4" />
         </Button>
-        <h2 className="text-2xl font-bold text-aktivGreen-quaternary">User Details</h2>
+        <h2 className="text-2xl font-bold text-aktivGreen-quaternary">Användardetaljer</h2>
       </div>
 
       <div className="flex flex-col md:flex-row items-start gap-6 mb-6">
@@ -95,7 +96,7 @@ const UserDetail = () => {
           <CardContent className="pt-6">
             <div className="space-y-2">
               <div className="flex justify-between">
-                <span className="text-muted-foreground">Total Spending:</span>
+                <span className="text-muted-foreground">Total Förbrukning:</span>
                 <span className="font-medium text-aktivGreen-quaternary">
                   {getTotalSpending().toLocaleString()} SEK
                 </span>
@@ -106,7 +107,7 @@ const UserDetail = () => {
 
         <Card className="w-full md:w-2/3 border-aktivGreen-base/20">
           <CardHeader className="bg-aktivGreen-base/10 border-b border-aktivGreen-base/20">
-            <CardTitle className="text-aktivGreen-quaternary">Spending by Category</CardTitle>
+            <CardTitle className="text-aktivGreen-quaternary">Utgifter per Kategori</CardTitle>
           </CardHeader>
           <CardContent className="flex justify-center pb-10">
             <div className="w-full max-w-xs">
@@ -126,18 +127,18 @@ const UserDetail = () => {
 
       <Card className="border-aktivGreen-base/20">
         <CardHeader className="bg-aktivGreen-base/10 border-b border-aktivGreen-base/20">
-          <CardTitle className="text-aktivGreen-quaternary">Purchase History</CardTitle>
+          <CardTitle className="text-aktivGreen-quaternary">Köphistorik</CardTitle>
         </CardHeader>
         <CardContent className="pt-6">
           <div className="rounded-md border border-aktivGreen-base/20">
             <Table>
               <TableHeader className="bg-aktivGreen-base/5">
                 <TableRow>
-                  <TableHead>Date</TableHead>
-                  <TableHead>Description</TableHead>
-                  <TableHead>Category</TableHead>
-                  <TableHead className="text-right">Amount (SEK)</TableHead>
-                  <TableHead className="text-right">Actions</TableHead>
+                  <TableHead>Datum</TableHead>
+                  <TableHead>Beskrivning</TableHead>
+                  <TableHead>Kategori</TableHead>
+                  <TableHead className="text-right">Belopp (SEK)</TableHead>
+                  <TableHead className="text-right">Åtgärder</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -147,7 +148,7 @@ const UserDetail = () => {
                       colSpan={5}
                       className="text-center py-10 text-muted-foreground"
                     >
-                      No purchases found
+                      Inga köp hittades
                     </TableCell>
                   </TableRow>
                 ) : (
@@ -178,7 +179,7 @@ const UserDetail = () => {
                           onClick={() => navigate(`/invoice/${userId}/${index}`)}
                         >
                           <FileText className="h-4 w-4 mr-1" />
-                          Invoice
+                          Faktura
                         </Button>
                       </TableCell>
                     </TableRow>

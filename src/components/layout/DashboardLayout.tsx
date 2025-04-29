@@ -46,16 +46,16 @@ const DashboardLayout = () => {
                 className="md:hidden mr-2"
               >
                 <Menu size={24} />
-                <span className="sr-only">Open menu</span>
+                <span className="sr-only">Öppna meny</span>
               </Button>
             )}
             <div className="flex-1">
-              <h1 className="text-lg md:text-xl font-bold text-aktivGreen-quaternary truncate">Cash Flow Dashboard</h1>
+              <h1 className="text-lg md:text-xl font-bold text-aktivGreen-quaternary truncate">Kassaflöde Dashboard</h1>
             </div>
 
             <div className="flex items-center gap-2">
               <span className="text-xs md:text-sm text-muted-foreground">
-                Last updated: {new Date().toLocaleString()}
+                Senast uppdaterad: {new Date().toLocaleString()}
               </span>
             </div>
           </div>

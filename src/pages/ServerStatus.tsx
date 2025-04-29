@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -16,7 +17,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const microservices = [
   {
-    name: "Customer API",
+    name: "Kund API",
     status: "Healthy",
     uptime: "99.98%",
     responseTime: "110ms",
@@ -24,11 +25,11 @@ const microservices = [
     memoryUsage: 45,
     diskUsage: 58,
     activeConnections: 187,
-    lastRestartTime: "3 days ago",
+    lastRestartTime: "3 dagar sedan",
     incidents: 0,
   },
   {
-    name: "Payment API",
+    name: "Betalnings API",
     status: "Healthy",
     uptime: "99.95%",
     responseTime: "125ms",
@@ -36,11 +37,11 @@ const microservices = [
     memoryUsage: 52,
     diskUsage: 63,
     activeConnections: 205,
-    lastRestartTime: "5 days ago",
+    lastRestartTime: "5 dagar sedan",
     incidents: 1,
   },
   {
-    name: "Customer Service",
+    name: "Kundtjänst",
     status: "Healthy",
     uptime: "99.99%",
     responseTime: "95ms",
@@ -48,11 +49,11 @@ const microservices = [
     memoryUsage: 39,
     diskUsage: 52,
     activeConnections: 142,
-    lastRestartTime: "7 days ago",
+    lastRestartTime: "7 dagar sedan",
     incidents: 0,
   },
   {
-    name: "Notification Service",
+    name: "Aviseringstjänst",
     status: "Degraded",
     uptime: "99.75%",
     responseTime: "160ms",
@@ -60,11 +61,11 @@ const microservices = [
     memoryUsage: 72,
     diskUsage: 81,
     activeConnections: 103,
-    lastRestartTime: "12 hours ago",
+    lastRestartTime: "12 timmar sedan",
     incidents: 3,
   },
   {
-    name: "Event Management Service",
+    name: "Evenemangshantering",
     status: "Healthy",
     uptime: "99.97%",
     responseTime: "115ms",
@@ -72,7 +73,7 @@ const microservices = [
     memoryUsage: 48,
     diskUsage: 60,
     activeConnections: 154,
-    lastRestartTime: "4 days ago",
+    lastRestartTime: "4 dagar sedan",
     incidents: 0,
   },
   {
@@ -84,7 +85,7 @@ const microservices = [
     memoryUsage: 56,
     diskUsage: 67,
     activeConnections: 89,
-    lastRestartTime: "2 days ago",
+    lastRestartTime: "2 dagar sedan",
     incidents: 0,
   },
 ];
@@ -143,7 +144,8 @@ const ServerStatus = () => {
                       service.status
                     )}`}
                   >
-                    {service.status}
+                    {service.status === "Healthy" ? "Fungerande" : 
+                     service.status === "Degraded" ? "Nedsatt" : "Problem"}
                   </span>
                 </div>
               </div>
@@ -153,7 +155,7 @@ const ServerStatus = () => {
                 <div className="flex items-center justify-between border-b pb-2">
                   <div className="flex items-center gap-2">
                     <BadgeCheck className="h-4 w-4 text-aktivGreen-base" />
-                    <span className="text-sm">Uptime</span>
+                    <span className="text-sm">Upptid</span>
                   </div>
                   <span className="text-sm font-medium">{service.uptime}</span>
                 </div>
@@ -161,7 +163,7 @@ const ServerStatus = () => {
                 <div className="flex items-center justify-between border-b pb-2">
                   <div className="flex items-center gap-2">
                     <Clock className="h-4 w-4 text-aktivGreen-base" />
-                    <span className="text-sm">Response Time</span>
+                    <span className="text-sm">Svarstid</span>
                   </div>
                   <span className="text-sm font-medium">
                     {service.responseTime}
@@ -171,7 +173,7 @@ const ServerStatus = () => {
                 <div className="flex items-center justify-between border-b pb-2">
                   <div className="flex items-center gap-2">
                     <Activity className="h-4 w-4 text-aktivGreen-base" />
-                    <span className="text-sm">Connections</span>
+                    <span className="text-sm">Anslutningar</span>
                   </div>
                   <span className="text-sm font-medium">
                     {service.activeConnections}
@@ -201,7 +203,7 @@ const ServerStatus = () => {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <Server className="h-4 w-4 text-aktivGreen-base" />
-                      <span className="text-sm">Memory</span>
+                      <span className="text-sm">Minne</span>
                     </div>
                     <span className="text-sm">{service.memoryUsage}%</span>
                   </div>
@@ -225,20 +227,20 @@ const ServerStatus = () => {
         <CardHeader className="bg-aktivGreen-base/5 border-b border-aktivGreen-base/20">
           <div className="flex items-center justify-between">
             <CardTitle className="text-aktivGreen-quaternary">
-              System Events
+              Systemhändelser
             </CardTitle>
             <div className="flex items-center text-sm text-muted-foreground">
               <RefreshCcw className="h-4 w-4 mr-1" />
-              Last updated: {new Date().toLocaleString()}
+              Senast uppdaterad: {new Date().toLocaleString()}
             </div>
           </div>
         </CardHeader>
         <CardContent className="p-4">
           <Tabs defaultValue="all">
             <TabsList className="mb-4">
-              <TabsTrigger value="all">All Events</TabsTrigger>
-              <TabsTrigger value="errors">Errors</TabsTrigger>
-              <TabsTrigger value="maintenance">Maintenance</TabsTrigger>
+              <TabsTrigger value="all">Alla Händelser</TabsTrigger>
+              <TabsTrigger value="errors">Fel</TabsTrigger>
+              <TabsTrigger value="maintenance">Underhåll</TabsTrigger>
             </TabsList>
 
             <TabsContent value="all">
@@ -248,16 +250,15 @@ const ServerStatus = () => {
                     <div className="flex items-center">
                       <AlertTriangle className="h-4 w-4 mr-2 text-amber-500" />
                       <span className="text-sm font-medium">
-                        Notification Service Performance Degradation
+                        Aviseringstjänsten har nedsatt prestanda
                       </span>
                     </div>
                     <span className="text-xs text-muted-foreground">
-                      Today, 09:15 AM
+                      Idag, 09:15
                     </span>
                   </div>
                   <p className="text-sm text-muted-foreground">
-                    Notification Service is experiencing higher than normal
-                    response times. Team is investigating.
+                    Aviseringstjänsten upplever längre svarstider än normalt. Teamet undersöker.
                   </p>
                 </div>
 
@@ -266,16 +267,15 @@ const ServerStatus = () => {
                     <div className="flex items-center">
                       <CheckCircle className="h-4 w-4 mr-2 text-aktivGreen-base" />
                       <span className="text-sm font-medium">
-                        Payment API Maintenance Completed
+                        Betalnings-API underhåll slutfört
                       </span>
                     </div>
                     <span className="text-xs text-muted-foreground">
-                      Yesterday, 02:30 PM
+                      Igår, 14:30
                     </span>
                   </div>
                   <p className="text-sm text-muted-foreground">
-                    Scheduled maintenance completed successfully. All systems
-                    operational.
+                    Planerat underhåll slutfördes framgångsrikt. Alla system är i drift.
                   </p>
                 </div>
 
@@ -284,16 +284,15 @@ const ServerStatus = () => {
                     <div className="flex items-center">
                       <Database className="h-4 w-4 mr-2 text-aktivGreen-base" />
                       <span className="text-sm font-medium">
-                        Database Optimization
+                        Databasoptimering
                       </span>
                     </div>
                     <span className="text-xs text-muted-foreground">
-                      2 days ago, 11:45 PM
+                      2 dagar sedan, 23:45
                     </span>
                   </div>
                   <p className="text-sm text-muted-foreground">
-                    Automated database optimization completed on all services.
-                    Performance improved by 15%.
+                    Automatiserad databasoptimering slutförd för alla tjänster. Prestandan förbättrades med 15%.
                   </p>
                 </div>
               </div>
@@ -306,16 +305,15 @@ const ServerStatus = () => {
                     <div className="flex items-center">
                       <AlertTriangle className="h-4 w-4 mr-2 text-amber-500" />
                       <span className="text-sm font-medium">
-                        Notification Service Performance Degradation
+                        Aviseringstjänsten har nedsatt prestanda
                       </span>
                     </div>
                     <span className="text-xs text-muted-foreground">
-                      Today, 09:15 AM
+                      Idag, 09:15
                     </span>
                   </div>
                   <p className="text-sm text-muted-foreground">
-                    Notification Service is experiencing higher than normal
-                    response times. Team is investigating.
+                    Aviseringstjänsten upplever längre svarstider än normalt. Teamet undersöker.
                   </p>
                 </div>
                 <div className="p-4 border rounded-lg border-aktivGreen-base/20 bg-white shadow-sm">
@@ -324,16 +322,15 @@ const ServerStatus = () => {
                       <AlertTriangle className="h-4 w-4 mr-2 mt-0.5 text-amber-500" />
                       <div>
                         <span className="text-sm font-medium">
-                          Payment API Intermittent Errors
+                          Betalnings-API tillfälliga fel
                         </span>
                         <p className="text-sm text-muted-foreground mt-1">
-                          Some payment transactions experienced delays. Issue
-                          resolved within 15 minutes.
+                          Vissa betalningstransaktioner upplevde förseningar. Problemet löstes inom 15 minuter.
                         </p>
                       </div>
                     </div>
                     <span className="text-xs text-muted-foreground">
-                      3 days ago, 03:42 PM
+                      3 dagar sedan, 15:42
                     </span>
                   </div>
                 </div>
@@ -347,16 +344,15 @@ const ServerStatus = () => {
                     <div className="flex items-center">
                       <CheckCircle className="h-4 w-4 mr-2 text-aktivGreen-base" />
                       <span className="text-sm font-medium">
-                        Payment API Maintenance Completed
+                        Betalnings-API underhåll slutfört
                       </span>
                     </div>
                     <span className="text-xs text-muted-foreground">
-                      Yesterday, 02:30 PM
+                      Igår, 14:30
                     </span>
                   </div>
                   <p className="text-sm text-muted-foreground">
-                    Scheduled maintenance completed successfully. All systems
-                    operational.
+                    Planerat underhåll slutfördes framgångsrikt. Alla system är i drift.
                   </p>
                 </div>
 
@@ -365,16 +361,15 @@ const ServerStatus = () => {
                     <div className="flex items-center">
                       <Database className="h-4 w-4 mr-2 text-aktivGreen-base" />
                       <span className="text-sm font-medium">
-                        Database Optimization
+                        Databasoptimering
                       </span>
                     </div>
                     <span className="text-xs text-muted-foreground">
-                      2 days ago, 11:45 PM
+                      2 dagar sedan, 23:45
                     </span>
                   </div>
                   <p className="text-sm text-muted-foreground">
-                    Automated database optimization completed on all services.
-                    Performance improved by 15%.
+                    Automatiserad databasoptimering slutförd för alla tjänster. Prestandan förbättrades med 15%.
                   </p>
                 </div>
 
@@ -383,16 +378,15 @@ const ServerStatus = () => {
                     <div className="flex items-center">
                       <Server className="h-4 w-4 mr-2 text-aktivGreen-base" />
                       <span className="text-sm font-medium">
-                        System Updates Scheduled
+                        Systemuppdateringar planerade
                       </span>
                     </div>
                     <span className="text-xs text-muted-foreground">
-                      Next week, Monday 02:00 AM
+                      Nästa vecka, måndag 02:00
                     </span>
                   </div>
                   <p className="text-sm text-muted-foreground">
-                    Planned maintenance for all services. Expected downtime: 30
-                    minutes.
+                    Planerat underhåll för alla tjänster. Förväntad driftstopp: 30 minuter.
                   </p>
                 </div>
               </div>

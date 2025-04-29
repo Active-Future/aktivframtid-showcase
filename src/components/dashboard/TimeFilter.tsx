@@ -16,11 +16,11 @@ const TimeFilter = ({ onFilterChange }: TimeFilterProps) => {
   };
 
   const filters = [
-    { id: "thisWeek", label: "This Week" },
-    { id: "lastWeek", label: "Last Week" },
-    { id: "thisMonth", label: "This Month" },
-    { id: "thisQuarter", label: "This Quarter" },
-    { id: "thisYear", label: "This Year" },
+    { id: "thisWeek", label: "Denna Vecka" },
+    { id: "lastWeek", label: "Förra Veckan" },
+    { id: "thisMonth", label: "Denna Månad" },
+    { id: "thisQuarter", label: "Detta Kvartal" },
+    { id: "thisYear", label: "Detta År" },
   ];
 
   return (

@@ -28,16 +28,16 @@ type TransactionsTableProps = {
 const TransactionsTable = ({ transactions }: TransactionsTableProps) => {
   return (
     <div className="dashboard-section">
-      <h2 className="dashboard-section-title text-aktivGreen-quaternary">Latest Transactions</h2>
+      <h2 className="dashboard-section-title text-aktivGreen-quaternary">Senaste Transaktionerna</h2>
       <div className="rounded-lg border border-aktivGreen-base/20 overflow-hidden">
         <Table>
           <TableHeader className="bg-aktivGreen-base/10">
             <TableRow>
-              <TableHead>Date</TableHead>
-              <TableHead>Description</TableHead>
-              <TableHead>Category</TableHead>
-              <TableHead>Type</TableHead>
-              <TableHead className="text-right">Amount</TableHead>
+              <TableHead>Datum</TableHead>
+              <TableHead>Beskrivning</TableHead>
+              <TableHead>Kategori</TableHead>
+              <TableHead>Typ</TableHead>
+              <TableHead className="text-right">Belopp</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -67,7 +67,7 @@ const TransactionsTable = ({ transactions }: TransactionsTableProps) => {
                     ) : (
                       <TrendingDown size={16} />
                     )}
-                    <span className="capitalize">{transaction.type}</span>
+                    <span className="capitalize">{transaction.type === "income" ? "Inkomst" : "Utgift"}</span>
                   </div>
                 </TableCell>
                 <TableCell

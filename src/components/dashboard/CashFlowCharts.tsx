@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -50,7 +51,7 @@ const CashFlowCharts = ({
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 dashboard-section">
       <Card className="lg:col-span-1 animate-fade-in [animation-delay:400ms]">
         <CardHeader>
-          <CardTitle>Loans taken out by Category</CardTitle>
+          <CardTitle>Låneprodukter</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="h-[300px]">
@@ -84,7 +85,7 @@ const CashFlowCharts = ({
                   verticalAlign="bottom"
                   align="center"
                 />
-                <Tooltip formatter={(value) => [`${value} SEK`, "Amount"]} />
+                <Tooltip formatter={(value) => [`${value} SEK`, "Belopp"]} />
               </PieChart>
             </ResponsiveContainer>
           </div>
@@ -93,13 +94,13 @@ const CashFlowCharts = ({
 
       <Card className="lg:col-span-1 animate-fade-in [animation-delay:500ms]">
         <CardHeader>
-          <CardTitle>Cash Flow Over Time</CardTitle>
+          <CardTitle>Kassaflöde över tid</CardTitle>
         </CardHeader>
         <CardContent>
           <Tabs defaultValue="area">
             <TabsList className="mb-4">
-              <TabsTrigger value="area">Area</TabsTrigger>
-              <TabsTrigger value="bar">Bar</TabsTrigger>
+              <TabsTrigger value="area">Område</TabsTrigger>
+              <TabsTrigger value="bar">Stapel</TabsTrigger>
             </TabsList>
             <TabsContent value="area">
               <div className="h-[300px]">
@@ -115,14 +116,14 @@ const CashFlowCharts = ({
                     <Area
                       type="monotone"
                       dataKey="income"
-                      name="Income"
+                      name="Inkomst"
                       stroke="#a0b41c"
                       fill="rgba(160, 180, 28, 0.2)"
                     />
                     <Area
                       type="monotone"
                       dataKey="expenses"
-                      name="Expenses"
+                      name="Utgifter"
                       stroke="#ef4444"
                       fill="rgba(239, 68, 68, 0.2)"
                     />
@@ -142,8 +143,8 @@ const CashFlowCharts = ({
                     <YAxis />
                     <Tooltip formatter={(value) => [`${value} SEK`, ""]} />
                     <Legend />
-                    <Bar dataKey="income" name="Income" fill="#a0b41c" />
-                    <Bar dataKey="expenses" name="Expenses" fill="#ef4444" />
+                    <Bar dataKey="income" name="Inkomst" fill="#a0b41c" />
+                    <Bar dataKey="expenses" name="Utgifter" fill="#ef4444" />
                   </BarChart>
                 </ResponsiveContainer>
               </div>

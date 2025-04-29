@@ -36,11 +36,11 @@ const monthlyData = [
 ];
 
 const categoryData = [
-  { name: "Team Accounts", value: 35 },
-  { name: "Cups", value: 20 },
-  { name: "Equipment", value: 15 },
-  { name: "Memberships", value: 10 },
-  { name: "Market Sales", value: 20 },
+  { name: "lagkassan", value: 35 },
+  { name: "sport cup", value: 20 },
+  { name: "utrustning", value: 15 },
+  { name: "medlemsavgift", value: 10 },
+  { name: "idrottförsäkring", value: 20 },
 ];
 
 const COLORS = ["#a0b41c", "#b9cb49", "#8a9919", "#c6d566", "#738015"];
@@ -62,12 +62,12 @@ const profitData = [
 const Analytics = () => {
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-6 text-aktivGreen-quaternary">Analytics</h1>
+      <h1 className="text-2xl font-bold mb-6 text-aktivGreen-quaternary">Analys</h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
         <Card className="border border-aktivGreen-base/20 shadow-md">
           <CardHeader className="bg-aktivGreen-base/10 border-b border-aktivGreen-base/20">
-            <CardTitle className="text-aktivGreen-quaternary">Monthly Cash Flow</CardTitle>
+            <CardTitle className="text-aktivGreen-quaternary">Månatligt Kassaflöde</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="h-[300px]">
@@ -78,9 +78,9 @@ const Analytics = () => {
                   <YAxis />
                   <Tooltip formatter={(value) => [`${value} SEK`, ""]} />
                   <Legend />
-                  <Bar dataKey="income" name="Income" fill="#a0b41c" />
-                  <Bar dataKey="expenses" name="Expenses" fill="#ef4444" />
-                  <Bar dataKey="profit" name="Profit" fill="#8b5cf6" />
+                  <Bar dataKey="income" name="Inkomst" fill="#a0b41c" />
+                  <Bar dataKey="expenses" name="Utgifter" fill="#ef4444" />
+                  <Bar dataKey="profit" name="Vinst" fill="#8b5cf6" />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -89,7 +89,7 @@ const Analytics = () => {
 
         <Card className="border border-aktivGreen-base/20 shadow-md">
           <CardHeader className="bg-aktivGreen-base/10 border-b border-aktivGreen-base/20">
-            <CardTitle className="text-aktivGreen-quaternary">Expense Breakdown</CardTitle>
+            <CardTitle className="text-aktivGreen-quaternary">Utgiftsfördelning</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="h-[300px]">
@@ -123,15 +123,15 @@ const Analytics = () => {
 
       <Card className="mb-6 border border-aktivGreen-base/20 shadow-md">
         <CardHeader className="bg-aktivGreen-base/10 border-b border-aktivGreen-base/20">
-          <CardTitle className="text-aktivGreen-quaternary">Detailed Analysis</CardTitle>
+          <CardTitle className="text-aktivGreen-quaternary">Detaljerad Analys</CardTitle>
         </CardHeader>
         <CardContent>
           <Tabs defaultValue="incomeVsExpenses">
             <TabsList className="mb-4">
               <TabsTrigger value="incomeVsExpenses">
-                Income vs Expenses
+                Inkomster vs Utgifter
               </TabsTrigger>
-              <TabsTrigger value="profit">Profit Trend</TabsTrigger>
+              <TabsTrigger value="profit">Vinstutveckling</TabsTrigger>
             </TabsList>
             <TabsContent value="incomeVsExpenses">
               <div className="h-[400px]">
@@ -148,7 +148,7 @@ const Analytics = () => {
                     <Line
                       type="monotone"
                       dataKey="income"
-                      name="Income"
+                      name="Inkomst"
                       stroke="#a0b41c"
                       strokeWidth={2}
                       dot={{ r: 5 }}
@@ -157,7 +157,7 @@ const Analytics = () => {
                     <Line
                       type="monotone"
                       dataKey="expenses"
-                      name="Expenses"
+                      name="Utgifter"
                       stroke="#ef4444"
                       strokeWidth={2}
                       dot={{ r: 5 }}
@@ -174,20 +174,20 @@ const Analytics = () => {
                     fill="#a0b41c"
                   />
                   <div>
-                    <h3 className="text-sm font-medium text-aktivGreen-quaternary">Income Growth</h3>
+                    <h3 className="text-sm font-medium text-aktivGreen-quaternary">Inkomsttillväxt</h3>
                     <p className="text-2xl font-bold text-aktivGreen-tertiary">+35.3%</p>
                     <p className="text-sm text-muted-foreground">
-                      From 2020 to 2023
+                      Från 2020 till 2023
                     </p>
                   </div>
                 </div>
                 <div className="flex items-center p-4 border rounded-lg border-aktivGreen-base/20">
                   <Circle className="text-loss mr-2" size={16} fill="#ef4444" />
                   <div>
-                    <h3 className="text-sm font-medium text-aktivGreen-quaternary">Expense Growth</h3>
+                    <h3 className="text-sm font-medium text-aktivGreen-quaternary">Utgiftstillväxt</h3>
                     <p className="text-2xl font-bold text-loss">+26.2%</p>
                     <p className="text-sm text-muted-foreground">
-                      From 2020 to 2023
+                      Från 2020 till 2023
                     </p>
                   </div>
                 </div>
@@ -204,9 +204,9 @@ const Analytics = () => {
                     <XAxis dataKey="year" />
                     <YAxis />
                     <Tooltip
-                      formatter={(value) => [`${value} SEK`, "Amount"]}
+                      formatter={(value) => [`${value} SEK`, "Belopp"]}
                     />
-                    <Bar dataKey="amount" name="Profit" fill="#a0b41c">
+                    <Bar dataKey="amount" name="Vinst" fill="#a0b41c">
                       {profitData.map((entry, index) => (
                         <Cell key={`cell-${index}`} fill="#a0b41c" />
                       ))}
@@ -222,10 +222,10 @@ const Analytics = () => {
                     fill="#a0b41c"
                   />
                   <div>
-                    <h3 className="text-sm font-medium text-aktivGreen-quaternary">Profit Growth</h3>
+                    <h3 className="text-sm font-medium text-aktivGreen-quaternary">Vinsttillväxt</h3>
                     <p className="text-2xl font-bold text-aktivGreen-tertiary">+65.0%</p>
                     <p className="text-sm text-muted-foreground">
-                      From 2020 to 2023
+                      Från 2020 till 2023
                     </p>
                   </div>
                 </div>

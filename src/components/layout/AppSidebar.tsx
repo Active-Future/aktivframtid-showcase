@@ -41,17 +41,17 @@ export function AppSidebar({ sidebarCollapsed, mobileOpen = false, setMobileOpen
       icon: LayoutDashboard,
     },
     {
-      title: "Accounts",
+      title: "Konton",
       url: "/accounts",
       icon: Users,
     },
     {
-      title: "Analytics",
+      title: "Analys",
       url: "/analytics",
       icon: BarChart3,
     },
     {
-      title: "Server Status",
+      title: "Serverstatus",
       url: "/server-status",
       icon: Server,
     },
@@ -65,12 +65,12 @@ export function AppSidebar({ sidebarCollapsed, mobileOpen = false, setMobileOpen
           <div className="p-3 flex items-center justify-between h-16 border-b">
             <img
               src={logoImage}
-              alt="Logo"
+              alt="Logotyp"
               className="w-32 h-auto object-contain"
             />
             <Button variant="ghost" size="icon" onClick={() => setMobileOpen?.(false)}>
               <X size={24} />
-              <span className="sr-only">Close</span>
+              <span className="sr-only">Stäng</span>
             </Button>
           </div>
           <div className="overflow-y-auto h-[calc(100vh-4rem)]">
@@ -115,7 +115,7 @@ export function AppSidebar({ sidebarCollapsed, mobileOpen = false, setMobileOpen
         {!isCollapsed ? (
           <img
             src={logoImage}
-            alt="Logo"
+            alt="Logotyp"
             className="w-32 h-auto object-contain mx-auto my-4"
           />
         ) : (
@@ -124,7 +124,7 @@ export function AppSidebar({ sidebarCollapsed, mobileOpen = false, setMobileOpen
       </div>
       <SidebarContent>
         <SidebarGroup>
-          {!isCollapsed && <SidebarGroupLabel>Main</SidebarGroupLabel>}
+          {!isCollapsed && <SidebarGroupLabel>Huvudmeny</SidebarGroupLabel>}
           <SidebarGroupContent>
             <SidebarMenu>
               {mainMenuItems.map((item) => (

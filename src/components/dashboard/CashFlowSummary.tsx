@@ -57,7 +57,7 @@ const SummaryCard = ({
             )}
             {percentage}%
           </span>
-          <span className="text-muted-foreground ml-2">vs last period</span>
+          <span className="text-muted-foreground ml-2">jämfört med föregående period</span>
         </div>
       </CardContent>
     </Card>
@@ -87,7 +87,7 @@ const CashFlowSummary = ({
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 dashboard-section">
       <SummaryCard
-        title="Total Earnings"
+        title="Totala Inkomster"
         value={`${earnings.toLocaleString()} SEK`}
         percentage={earningsPercentage}
         icon={<ArrowUpIcon />}
@@ -96,7 +96,7 @@ const CashFlowSummary = ({
       />
 
       <SummaryCard
-        title="Total Spendings"
+        title="Totala Utgifter"
         value={`${spendings.toLocaleString()} SEK`}
         percentage={spendingsPercentage}
         icon={<ArrowDownIcon />}
@@ -114,7 +114,7 @@ const CashFlowSummary = ({
           <div className="flex justify-between items-start">
             <div>
               <p className="text-sm font-medium text-muted-foreground">
-                Net Cash Status
+                Nettokassastatus
               </p>
               <h3
                 className={cn(
@@ -140,10 +140,10 @@ const CashFlowSummary = ({
             <span
               className={cn("text-sm", isProfit ? "text-profit" : "text-loss")}
             >
-              {isProfit ? "Profit" : "Loss"}
+              {isProfit ? "Vinst" : "Förlust"}
             </span>
             <span className="text-sm text-muted-foreground ml-2">
-              for current period
+              för aktuell period
             </span>
           </div>
         </CardContent>

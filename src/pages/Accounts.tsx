@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -50,12 +51,12 @@ const Accounts = () => {
       <CardHeader className="bg-aktivGreen-base/10 border-b border-aktivGreen-base/20">
         <div className="flex flex-col md:flex-row md:items-center justify-between space-y-2 md:space-y-0">
           <CardTitle className="text-aktivGreen-quaternary">
-            User Accounts
+            Användarkonton
           </CardTitle>
           <div className="relative">
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-aktivGreen-tertiary" />
             <Input
-              placeholder="Search by name or personnummer"
+              placeholder="Sök på namn eller personnummer"
               className="pl-8 w-full md:w-[300px] border-aktivGreen-base/30 focus:border-aktivGreen-base focus:ring-aktivGreen-base rounded-lg"
               value={searchTerm}
               onChange={handleSearch}
@@ -68,11 +69,11 @@ const Accounts = () => {
           <Table>
             <TableHeader className="bg-aktivGreen-base/10">
               <TableRow>
-                <TableHead>Name</TableHead>
+                <TableHead>Namn</TableHead>
                 <TableHead>Personnummer</TableHead>
-                <TableHead>Invoices</TableHead>
+                <TableHead>Fakturor</TableHead>
                 <TableHead className="text-right">
-                  Total Spending (SEK)
+                  Total Förbrukning (SEK)
                 </TableHead>
               </TableRow>
             </TableHeader>
@@ -83,7 +84,7 @@ const Accounts = () => {
                     colSpan={4}
                     className="text-center py-10 text-muted-foreground"
                   >
-                    No users found
+                    Inga användare hittades
                   </TableCell>
                 </TableRow>
               ) : (
@@ -108,7 +109,7 @@ const Accounts = () => {
                           variant="outline"
                           className="bg-aktivGreen-base/10 text-aktivGreen-tertiary border-aktivGreen-base/20"
                         >
-                          {user.purchases.length} invoices
+                          {user.purchases.length} fakturor
                         </Badge>
                       </div>
                     </TableCell>
