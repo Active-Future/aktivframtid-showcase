@@ -8,11 +8,11 @@ import AppStoreDownloads from "@/components/ui/AppStoreDownloads";
 
 // Mock data - in a real app, this would come from an API
 const mockExpenseData = [
-  { name: "lagkassan", value: 1200, color: "#a0b41c" },
-  { name: "sport cup", value: 2500, color: "#b9cb49" },
-  { name: "utrustning", value: 450, color: "#8a9919" },
-  { name: "medlemsavgift", value: 350, color: "#c6d566" },
-  { name: "idrottförsäkring", value: 400, color: "#738015" },
+  { name: "Lagkassan", value: 1200, color: "#a0b41c" },
+  { name: "Sport cup", value: 2500, color: "#b9cb49" },
+  { name: "Utrustning", value: 450, color: "#8a9919" },
+  { name: "Medlemsavgift", value: 350, color: "#c6d566" },
+  { name: "Idrottförsäkring", value: 400, color: "#738015" },
 ];
 
 const mockTimeSeriesData = [
@@ -31,11 +31,11 @@ const mockTimeSeriesData = [
 ];
 
 const mockCategoryComparisonData = [
-  { category: "lagkassan", income: 9500, expenses: 0 },
-  { category: "sport cup", income: 2500, expenses: 0 },
-  { category: "utrustning", income: 0, expenses: 2500 },
-  { category: "medlemsavgift", income: 0, expenses: 1200 },
-  { category: "idrottförsäkring", income: 0, expenses: 450 },
+  { category: "Lagkassan", income: 9500, expenses: 0 },
+  { category: "Sport Cup", income: 2500, expenses: 0 },
+  { category: "Utrustning", income: 0, expenses: 2500 },
+  { category: "Medlemsavgift", income: 0, expenses: 1200 },
+  { category: "Idrottförsäkring", income: 0, expenses: 450 },
 ];
 
 const mockTransactions = [
@@ -75,7 +75,7 @@ const mockTransactions = [
     id: "5",
     date: "2023-12-10",
     description: "Sport Cup-inköp",
-    category: "cups",
+    category: "sport cup",
     amount: 60,
     type: "expense" as const,
   },
@@ -115,7 +115,7 @@ const mockTransactions = [
     id: "10",
     date: "2023-12-22",
     description: "Sport Cup-inköp",
-    category: "cups",
+    category: "sport cup",
     amount: 200,
     type: "expense" as const,
   },
