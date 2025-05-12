@@ -20,18 +20,18 @@ import { Circle } from "lucide-react";
 
 // Mock data
 const monthlyData = [
-  { month: "Jan", income: 8000, expenses: 6200, profit: 1800 },
-  { month: "Feb", income: 7800, expenses: 5900, profit: 1900 },
-  { month: "Mar", income: 9500, expenses: 7100, profit: 2400 },
-  { month: "Apr", income: 8900, expenses: 6700, profit: 2200 },
-  { month: "Maj", income: 9200, expenses: 6500, profit: 2700 },
-  { month: "Jun", income: 8700, expenses: 7100, profit: 1600 },
-  { month: "Jul", income: 9600, expenses: 7400, profit: 2200 },
-  { month: "Aug", income: 10200, expenses: 7800, profit: 2400 },
-  { month: "Sep", income: 9800, expenses: 7200, profit: 2600 },
-  { month: "Okt", income: 10500, expenses: 7900, profit: 2600 },
-  { month: "Nov", income: 11000, expenses: 8200, profit: 2800 },
-  { month: "Dec", income: 12000, expenses: 8800, profit: 3200 },
+  { month: "Jan", income: 26000000, expenses: 1550000, profit: 26450000 },
+  { month: "Feb", income: 28200000, expenses: 1560000, profit: 26640000 },
+  { month: "Mar", income: 28400000, expenses: 1570000, profit: 26830000 },
+  { month: "Apr", income: 28500000, expenses: 1570000, profit: 26930000 },
+  { month: "Maj", income: 28600000, expenses: 1580000, profit: 27020000 },
+  { month: "Jun", income: 28400000, expenses: 1570000, profit: 26830000 },
+  { month: "Jul", income: 28600000, expenses: 1580000, profit: 27020000 },
+  { month: "Aug", income: 28800000, expenses: 1590000, profit: 27210000 },
+  { month: "Sep", income: 28400000, expenses: 1570000, profit: 26830000 },
+  { month: "Okt", income: 28600000, expenses: 1580000, profit: 27020000 },
+  { month: "Nov", income: 28800000, expenses: 1590000, profit: 27210000 },
+  { month: "Dec", income: 31449250, expenses: 1700000, profit: 29749250 },
 ];
 
 const categoryData = [
@@ -45,17 +45,17 @@ const categoryData = [
 const COLORS = ["#a0b41c", "#b9cb49", "#8a9919", "#c6d566", "#738015"];
 
 const incomeVsExpensesData = [
-  { year: "2020", income: 85000, expenses: 65000 },
-  { year: "2021", income: 92000, expenses: 70000 },
-  { year: "2022", income: 100000, expenses: 75000 },
-  { year: "2023", income: 115000, expenses: 82000 },
+  { year: "2026", income: 10894950, expenses: 5979000 },
+  { year: "2027", income: 54474750, expenses: 9895000 },
+  { year: "2028", income: 196812000, expenses: 14040000 },
+  { year: "2029", income: 339149250, expenses: 18685000 },
 ];
 
 const profitData = [
-  { year: "2020", amount: 20000 },
-  { year: "2021", amount: 22000 },
-  { year: "2022", amount: 25000 },
-  { year: "2023", amount: 33000 },
+  { year: "2020", amount: 4915950 },
+  { year: "2021", amount: 44579750 },
+  { year: "2022", amount: 182772000 },
+  { year: "2023", amount: 320464250 },
 ];
 
 const Analytics = () => {
