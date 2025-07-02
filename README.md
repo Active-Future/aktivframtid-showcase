@@ -11,14 +11,12 @@ While this repo does not reveal the private source code, this section aims to gi
 
 - Technology badges here
 
-- Picture here
-
+![architecture-diagram-production](docs/architecture-diagram-production.png)
 
 
 ## Achieved Metrics
 
 - Impressive metrics achieved here
-
 
 
 ## Contributors
